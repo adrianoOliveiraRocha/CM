@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -122,7 +125,7 @@
 					<p><a href="views/core/contato.php">Contato</a></p>
 					<p><a href="views/core/portfolio.php">Portfólio</a></p>
 					<p><a href="#videos">Vídeos</a></p>
-					<p><a href="#">Área Restrita</a></p>
+					<p><a href="control/UserControl.php?key=enter">Área Restrita</a></p>
 			
 				</div>
 			
@@ -307,7 +310,7 @@
 				
 				</div>
 				<div class="col-md-3 rodape">
-					<img class="img-responsive" src="core/static/imagens/logo.png"/>
+					<img class="img-responsive" src="static/imagens/logo.png"/>
 				
 				</div>
 			
