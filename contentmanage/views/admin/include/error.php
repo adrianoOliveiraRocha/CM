@@ -37,6 +37,19 @@
 				 href='../new_category.php'>Voltar</a>
 				</div>";
 			
+		} elseif ($_GET['msg'] == 'prod_empty') {
+			echo "<div class='alert alert-danger' style='margin: 5%;'>
+				  <strong>Erro!</strong> Por favor, preencha todas as informações 
+				  do produto.
+				  <div class='panel' 
+				style='width: 50%; 
+				margin-left: auto; 
+				margin-right: auto;'>
+				<a type='button' class='btn btn-warning'
+				 style='margin-left: auto; margin-right: auto;''
+				 href='../new_product.php'>Voltar</a>
+				</div>";
+			
 		} elseif ($_GET['msg'] == 'nosave') {
 			echo "<div class='alert alert-danger' style='margin: 5%;'>
 				  <strong>Erro!</strong> Não foi possível realizar esta operação.

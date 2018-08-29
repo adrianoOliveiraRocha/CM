@@ -14,6 +14,7 @@
 			<h3>Área Administrativa -> Nova Categoria</h3>
 			<form action="../../control/CategoryControl.php?key=newcategory" 
 			method="POST">
+			
 				<div class="form-group">
 					<label>Nome da Categoria:</label>
 					<input class="form-control" name="category_name">

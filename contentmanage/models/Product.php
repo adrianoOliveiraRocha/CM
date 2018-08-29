@@ -37,7 +37,7 @@ class Product
 		return $this->description;
 	}
 
-	public function setId($image){
+	public function setImage($image){
 		$this->image = $image;
 	}
 	public function getImage(){
