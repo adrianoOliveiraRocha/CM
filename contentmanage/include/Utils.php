@@ -15,7 +15,7 @@ class Utils {
 		$fileType = $image['type'];
 		$fileExtension = pathinfo($fileName, PATHINFO_EXTENSION);
 
-		$uploadPath = $uploadDirectory . basename($fileName);
+		$uploadPath = $uploadDirectory . time() . basename($fileName);
 
 		try {
 			$didUpload = move_uploaded_file($fileTmpName, $uploadPath);
@@ -31,6 +31,8 @@ class Utils {
 	}
 
 	public static function test(){
-		echo UPLOAD;
+		// echo UPLOAD;
+		$t = time();
+		echo $t;
 	}
 }
