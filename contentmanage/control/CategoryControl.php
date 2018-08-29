@@ -22,6 +22,9 @@ if (isset($_GET['key'])) {
 			}
 			break;
 
+		case 'editcategory':
+			header('location:../views/admin/edit_category.php?id='.$_GET['id']);
+			break;
 			
 		default:
 			# code...

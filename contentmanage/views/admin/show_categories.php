@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Nova Categoria</title>
+	<title>Exibir Categorias</title>
 	<?php include_once 'include/links.php' ?>
 	<!-- datatable -->
 	<script type="text/javascript" language="javascript" class="init">
@@ -52,7 +52,7 @@
 						echo "
 						<tr>
 							<td>
-								<a href='#'
+								<a href='../../control/CategoryControl.php?key=editcategory&id={$category ['id']}'
 								 title='Editar categoria'>
 									{$category ['id']}
 								</a>
