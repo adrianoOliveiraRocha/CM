@@ -45,7 +45,9 @@ if (isset($_SESSION['loged'])) {
 	        Produtos
 	      </a>
 	      <div class="dropdown-menu">
-	        <a class="dropdown-item" href="#">Novo Produto</a>
+	        <a class="dropdown-item" href="new_product.php">
+	        	Novo Produto
+	        </a>
 	        <a class="dropdown-item" href="#">Exibir Produtos</a>
 	        
 	      </div>

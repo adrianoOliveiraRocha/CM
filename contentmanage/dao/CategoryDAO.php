@@ -27,11 +27,11 @@ class CategoryDAO
 		return $categories;
 	}
 
-	public static function getThisCategory($idcategory) {
+	public static function getThisCategory($id) {
 		self::$connect = Connect::getInstance ();
-		$q = "select * from category where idcategory = :idcategory";
+		$q = "select * from category where id = :id";
 		$statement = self::$connect->prepare ( $q );
-		$statement->execute(array(':idcategory' => $idcategory));
+		$statement->execute(array(':id' => $id));
 		self::$connect = null;
 
 		if ($statement->rowCount() > 0) {
@@ -44,7 +44,6 @@ class CategoryDAO
 	}
 
 	public static function update($q) {
-		$response = true;
 		try {
 			self::$connect = Connect::getInstance();
 			$stmt = self::$connect->prepare( $q );

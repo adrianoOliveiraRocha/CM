@@ -23,7 +23,18 @@ if (isset($_GET['key'])) {
 			break;
 
 		case 'editcategory':
-			header('location:../views/admin/edit_category.php?id='.$_GET['id']);
+			if ($_POST['category_name']) {
+				$id = $_POST['id'];
+				$name = $_POST['category_name'];
+				$q = "update category set name = '$name' where id = $id";
+				if (CategoryDAO::update($q)) {
+					header('location:../views/admin/index.php?msg=success');
+				} else {
+					header('location:../views/admin/include/error.php?msg=nosave');
+				}
+			} else {
+				header('location:../views/admin/edit_category.php?id='.$_GET['id']);
+			}
 			break;
 			
 		default:
