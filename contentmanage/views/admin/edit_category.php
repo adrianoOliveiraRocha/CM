@@ -19,7 +19,7 @@
 			margin-right: auto; margin-top: 5%;">
 			<h3>Área Administrativa -> Editar Categoria</h3>
 
-			<form action="../../control/CategoryControl.php?key=editcategory" 
+			<form action="../../control/CategoryControl.php?key=editcategory"
 			method="POST">
 				<?php
 					echo "
@@ -33,6 +33,16 @@
 					";
 				?>
 				<button type="submit" class="btn btn-primary">Editar</button>
+
+				<?php
+				echo "
+				<a type='button' class='btn btn-danger' style='color: white'
+        href='../../control/CategoryControl.php?key=del&id={$category['id']}'>
+        	Deletar
+				</a>
+				";
+				?>
+
 			</form>
 
 		</div>

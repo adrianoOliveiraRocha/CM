@@ -36,7 +36,16 @@ if (isset($_GET['key'])) {
 				header('location:../views/admin/edit_category.php?id='.$_GET['id']);
 			}
 			break;
-			
+
+		case 'del':
+			$id = $_GET['id'];
+			if (CategoryDAO::delete($id)) {
+				header('location:../views/admin/index.php?msg=success');
+			} else {
+				header('location:../views/admin/include/error.php?msg=nosave');
+			}
+			break;
+
 		default:
 			# code...
 			break;

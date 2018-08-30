@@ -14,8 +14,8 @@ class Utils {
 		$fileTmpName  = $image['tmp_name'];
 		$fileType = $image['type'];
 		$fileExtension = pathinfo($fileName, PATHINFO_EXTENSION);
-
-		$uploadPath = $uploadDirectory . time() . basename($fileName);
+		$imageName = time() . basename($fileName);
+		$uploadPath = $uploadDirectory . $imageName;
 
 		try {
 			$didUpload = move_uploaded_file($fileTmpName, $uploadPath);
@@ -23,11 +23,8 @@ class Utils {
 			echo $e->getMessage();
 		}
 
-		if ($didUpload) {
-			return true;
-		} else {
-			return false;
-		}
+		return $imageName;
+
 	}
 
 	public static function test(){

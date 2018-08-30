@@ -14,12 +14,19 @@ if (isset($_GET['key'])) {
 			$value = $_POST['value'];
 			$category = $_POST['category'];
 			$image = $_FILES['image'];
-			// Utils::test();
 
-			if (Utils::uploadImage($image)) {
-				echo "upload made with success";
+			$imageName = Utils::uploadImage($image);
+
+			$product = new Product();
+			$product->setCategoryId($category);
+			$product->setValue($value);
+			$product->setDescription($description);
+			$product->setImage($imageName);
+
+			if (ProductDAO::save($product)) {
+				header('location:../views/admin/index.php?msg=success');
 			} else {
-				echo "ops";
+				header('location:../views/admin/include/error.php?msg=nosave');
 			}
 
 			break;

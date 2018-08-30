@@ -1,13 +1,16 @@
 <?php
 include_once CONNECT . 'connect.php';
 
-class CategoryDAO
+class ProductDAO
 {
 	private static $connect;
 
-	public static function save($category)
+	public static function save($product)
 	{
-		$statement = "insert into category (name) values('{$category->getName()}')";
+		$statement = "insert into product (category_id, value, description, image)
+    values({$product->getCategoryId()}, '{$product->getValue()}',
+    '{$product->getDescription()}', '{$product->getImage()}')";
+
 		self::$connect = Connect::getInstance();
 		$stmt = self::$connect->prepare ( $statement );
 		$stmt->execute ();
@@ -16,6 +19,7 @@ class CategoryDAO
 		} else {
 			return false;
 		}
+
 	}
 
 	public static function getAllCategories($offset=0)
