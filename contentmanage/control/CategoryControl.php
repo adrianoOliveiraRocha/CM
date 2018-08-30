@@ -4,6 +4,7 @@ session_start();
 include_once '../config.php';
 include_once MODEL . 'Category.php';
 include_once DAO . 'CategoryDAO.php';
+include_once DAO . 'ProductDAO.php';
 
 if (isset($_GET['key'])) {
 
@@ -39,11 +40,18 @@ if (isset($_GET['key'])) {
 
 		case 'del':
 			$id = $_GET['id'];
+			$howMany = CategoryDAO::howManyProducts($id);
+			if ($howMany > 0) { //there is products in this category
+				$q = "delete from product where category_id = {$id}";
+				ProductDAO::update($q);
+			}
+
 			if (CategoryDAO::delete($id)) {
 				header('location:../views/admin/index.php?msg=success');
 			} else {
-				header('location:../views/admin/include/error.php?msg=nosave');
+				header('location:../views/admin/include/error.php?msg=nodel');
 			}
+
 			break;
 
 		default:

@@ -67,6 +67,16 @@ class CategoryDAO
 		}
 	}
 
+	public static function howManyProducts($id) {
+		$q = " select count(product.id) as howMany from category, product
+		where category.id = product.category_id and category.id = {$id}";
+		self::$connect = Connect::getInstance ();
+		$query = self::$connect->query ( $q );
+		$info = $query->fetch ( PDO::FETCH_ASSOC );
+		self::$connect = null;
+		return $info ['howMany'];
+	}
+
 	// public static function getNomes() {
 	// 	self::$connect = \Connect::getInstance ();
 	// 	$response = self::$connect->query ( "select nome from Categoria order by nome" );
@@ -90,13 +100,7 @@ class CategoryDAO
 	// 	}
 	// }
 
-	// public static function quantidadeProdutos($id) {
-	// 	self::$connect = \Connect::getInstance ();
-	// 	$query = self::$connect->query ( "select estoque from produto where idcategoria = {$id}" );
-	// 	$info = $query->fetch ( \PDO::FETCH_ASSOC );
-	// 	self::$connect = null;
-	// 	return $info ['estoque'];
-	// }
+
 
 	// public static function deletar($id) {
 	// 	self::$connect = \Connect::getInstance ();

@@ -20,25 +20,25 @@ if (isset($_SESSION['loged'])) {
 	</button>
 	<div class="collapse navbar-collapse" id="collapsibleNavbar">
 	<ul class="navbar-nav">
-		
+
 	    <li class="nav-item dropdown">
 	      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
 	        Categorias
 	      </a>
 	      <div class="dropdown-menu">
 
-	        <a class="dropdown-item" 
+	        <a class="dropdown-item"
 	        	href="new_category.php">
 	        	Nova Categoria
 	        </a>
 
-	        <a class="dropdown-item" 
+	        <a class="dropdown-item"
 	        	href="show_categories.php">
 	        	Exibir Categorias
 	        </a>
-	        
+
 	      </div>
-	    </li>  
+	    </li>
 
 	    <li class="nav-item dropdown">
 	      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
@@ -48,10 +48,10 @@ if (isset($_SESSION['loged'])) {
 	        <a class="dropdown-item" href="new_product.php">
 	        	Novo Produto
 	        </a>
-	        <a class="dropdown-item" href="#">Exibir Produtos</a>
-	        
+	        <a class="dropdown-item" href="show_products.php">Exibir Produtos</a>
+
 	      </div>
-	    </li>  
+	    </li>
 
 	    <li class="nav-item dropdown">
 	      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
@@ -60,9 +60,9 @@ if (isset($_SESSION['loged'])) {
 	      <div class="dropdown-menu">
 	        <a class="dropdown-item" href="#">Nova Promoção</a>
 	        <a class="dropdown-item" href="#">Exibir Promoções</a>
-	        
+
 	      </div>
-	    </li>  
+	    </li>
 
 	    <li class="nav-item">
 	    	<a class="nav-link" href="../../../control/UserControl.php?key=logout">
@@ -74,9 +74,9 @@ if (isset($_SESSION['loged'])) {
 	    	<a class="nav-link" href="../../../index.php">
 	    		Ir para o site
 	    	</a>
-	    </li>  
-	    
+	    </li>
+
 
 	</ul>
-	</div>  
+	</div>
 </nav>

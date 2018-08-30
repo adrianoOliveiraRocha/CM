@@ -7,12 +7,12 @@
 <body>
 	<?php include_once 'include/menu.php' ?>
 
-	<?php 
+	<?php
 		include_once '../../config.php';
 		include_once DAO . 'CategoryDAO.php';
 
 		$categories = CategoryDAO::getAllCategories();
-		
+
 	?>
 
 	<div class="container-fluid">
@@ -21,7 +21,7 @@
 			margin-right: auto; margin-top: 5%;">
 			<h3>Área Administrativa -> Novo Producto</h3>
 
-			<form action="../../control/ProductControl.php?key=newproduct" 
+			<form action="../../control/ProductControl.php?key=newproduct"
 			method="post" enctype="multipart/form-data">
 
 				<div class="form-group">
@@ -45,14 +45,14 @@
 		        			{$category ['name']}</option>";
 		        		}
 		        	?>
-			        
+
 			        </select>
 				</div>
 
 				<div class="form-group">
-			        <label>Imagem:</label>
-			        <input type="file" name='image' class="form-control">
-				</div> 
+	        <label>Imagem:</label>
+	        <input type="file" name='image' class="form-control">
+				</div>
 
 				<button type="submit" class="btn btn-primary">Salvar</button>
 			</form>

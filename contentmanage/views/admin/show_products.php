@@ -24,9 +24,9 @@
 
 	<?php
 		include_once '../../config.php';
-		include_once DAO . 'CategoryDAO.php';
-
-		$categories = CategoryDAO::getAllCategories();
+		include_once DAO . 'ProductDAO.php';
+    
+		$products = ProductDAO::getAllProducts();
 
 	?>
 
@@ -34,30 +34,32 @@
 		<div class="panel-body"
 			style="width: 70%; margin-left: auto;
 			margin-right: auto; margin-top: 5%;">
-			<h3>Área Administrativa -> Exibir Cateorias</h3>
+			<h3>Área Administrativa -> Exibir Produtos</h3>
 
-			<?php if ($categories) {
+			<?php if ($products) {
 			?>
 
 			<table id="table" class="display">
 				<thead>
 					<tr>
 						<th>ID</th>
-						<th>Nome</th>
+						<th>Descrição</th>
+            <th>Valor</th>
 					</tr>
 				</thead>
 				<tbody>
 					<?php
-					foreach ($categories as $category) {
+					foreach ($products as $product) {
 						echo "
 						<tr>
 							<td>
-								<a href='../../control/CategoryControl.php?key=editcategory&id={$category ['id']}'
-								 title='Editar categoria'>
-									{$category ['id']}
+								<a href='../../control/ProductControl.php?key=edit&id={$product ['id']}'
+								 title='Detalhes'>
+									{$product ['id']}
 								</a>
 							</td>
-							<td>{$category ['name']}</td>
+							<td>{$product ['description']}</td>
+              <td>{$product ['value']}</td>
 						</tr>
 						";
 					}
@@ -68,7 +70,7 @@
 
 			<?php
 			} ?>
-			
+
 		</div>
 	</div>
 

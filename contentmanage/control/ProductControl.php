@@ -31,18 +31,47 @@ if (isset($_GET['key'])) {
 
 			break;
 
-		case 'editcategory':
-			if ($_POST['category_name']) {
-				$id = $_POST['id'];
-				$name = $_POST['category_name'];
-				$q = "update category set name = '$name' where id = $id";
-				if (CategoryDAO::update($q)) {
+		case 'edit':
+			if ($_POST['description']) {
+				$idProduct = $_POST['id'];
+				$description = $_POST['description'];
+				$idCategory = $_POST['category'];
+				$value = $_POST['value'];
+				$image = $_FILES['image'];
+				$q = "";
+				if (!empty($image['name'])) { //image sended
+					$product = ProductDAO::getThisProduct($idProduct);
+					$currentImageName = $product['image'];
+					unlink(UPLOAD . $currentImageName);
+					$imageName = Utils::uploadImage($image);
+					$q = "update product set description = '{$description}',
+					category_id = {$idCategory}, image = '{$imageName}',
+					value='{$value}' where id = {$idProduct}";
+				} else {
+					$q = "update product set description = '{$description}',
+					category_id = {$idCategory}, value='{$value}'
+					where id = {$idProduct}";
+				}
+				if (ProductDAO::update($q)) {
 					header('location:../views/admin/index.php?msg=success');
 				} else {
 					header('location:../views/admin/include/error.php?msg=nosave');
 				}
+
 			} else {
-				header('location:../views/admin/edit_category.php?id='.$_GET['id']);
+				header('location:../views/admin/edit_product.php?id='.$_GET['id']);
+			}
+			break;
+
+		case 'del':
+			$idProduct = $_GET['id'];
+			$product = ProductDAO::getThisProduct($idProduct);
+			$currentImageName = $product['image'];
+			unlink(UPLOAD . $currentImageName);
+			if (ProductDAO::delete($idProduct)) {
+				header('location:../views/admin/index.php?msg=success');
+			} else {
+				header('location:../views/admin/include/error.php?msg=nodel');
 			}
 			break;
 

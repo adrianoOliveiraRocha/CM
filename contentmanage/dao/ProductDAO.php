@@ -22,18 +22,18 @@ class ProductDAO
 
 	}
 
-	public static function getAllCategories($offset=0)
+	public static function getAllProducts($offset=0)
 	{
 		self::$connect = Connect::getInstance ();
-		$response = self::$connect->query ( "select * from category" );
-		$categories = $response->fetchAll ( PDO::FETCH_ASSOC );
+		$response = self::$connect->query ( "select * from product" );
+		$products = $response->fetchAll ( PDO::FETCH_ASSOC );
 		self::$connect = null;
-		return $categories;
+		return $products;
 	}
 
-	public static function getThisCategory($id) {
+	public static function getThisProduct($id) {
 		self::$connect = Connect::getInstance ();
-		$q = "select * from category where id = :id";
+		$q = "select * from product where id = :id";
 		$statement = self::$connect->prepare ( $q );
 		$statement->execute(array(':id' => $id));
 		self::$connect = null;
@@ -61,7 +61,7 @@ class ProductDAO
 
 	public function delete($id) {
 		self::$connect = Connect::getInstance ();
-		$stmt = self::$connect->prepare ( "delete from category where id = {$id}" );
+		$stmt = self::$connect->prepare ( "delete from product where id = {$id}" );
 		$stmt->execute ();
 		self::$connect = null;
 		if ($stmt->rowCount () > 0) {
