@@ -8,7 +8,7 @@ class Product
 	private $value;
 	private $description;
 	private $image;
-	
+
 	public function setId($id){
 		$this->id = $id;
 	}
@@ -44,27 +44,4 @@ class Product
 		return $this->image;
 	}
 
-	public function save()
-	{
-		if (CategoryDAO::save($this)) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-	public static function update($name, $id) {
-		$q = "update category set name = '{$name}' where idcategory = {$id}";
-		if (CategoryDAO::update($q)) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-	public static function delete($id) {
-		if (CategoryDAO::delete($id)) {
-			return true;
-		} else {
-			return false;
-		}
-	}
 }

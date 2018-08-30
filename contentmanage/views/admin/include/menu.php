@@ -58,8 +58,8 @@ if (isset($_SESSION['loged'])) {
 	        Promoções
 	      </a>
 	      <div class="dropdown-menu">
-	        <a class="dropdown-item" href="#">Nova Promoção</a>
-	        <a class="dropdown-item" href="#">Exibir Promoções</a>
+	        <a class="dropdown-item" href="new_promotion.php">Nova Promoção</a>
+	        <a class="dropdown-item" href="show_promotions.php">Exibir Promoções</a>
 
 	      </div>
 	    </li>
