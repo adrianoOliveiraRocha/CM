@@ -21,72 +21,77 @@ if (isset($_SESSION['loged'])) {
 	<div class="collapse navbar-collapse" id="collapsibleNavbar">
 	<ul class="navbar-nav">
 
-	    <li class="nav-item dropdown">
-	      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-	        Categorias
-	      </a>
-	      <div class="dropdown-menu">
+		<li class="nav-item">
+    	<a class="nav-link" href="show_mydata.php">
+    		Meus Dados
+    	</a>
+    </li>
 
-	        <a class="dropdown-item"
-	        	href="new_category.php">
-	        	Nova Categoria
-	        </a>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        Categorias
+      </a>
+      <div class="dropdown-menu">
 
-	        <a class="dropdown-item"
-	        	href="show_categories.php">
-	        	Exibir Categorias
-	        </a>
+        <a class="dropdown-item"
+        	href="new_category.php">
+        	Nova Categoria
+        </a>
 
-	      </div>
-	    </li>
+        <a class="dropdown-item"
+        	href="show_categories.php">
+        	Exibir Categorias
+        </a>
 
-	    <li class="nav-item dropdown">
-	      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-	        Produtos
-	      </a>
-	      <div class="dropdown-menu">
-	        <a class="dropdown-item" href="new_product.php">
-	        	Novo Produto
-	        </a>
-	        <a class="dropdown-item" href="show_products.php">Exibir Produtos</a>
+      </div>
+    </li>
 
-	      </div>
-	    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        Produtos
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="new_product.php">
+        	Novo Produto
+        </a>
+        <a class="dropdown-item" href="show_products.php">Exibir Produtos</a>
 
-	    <li class="nav-item dropdown">
-	      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-	        Promoções
-	      </a>
-	      <div class="dropdown-menu">
-	        <a class="dropdown-item" href="new_promotion.php">Nova Promoção</a>
-	        <a class="dropdown-item" href="show_promotions.php">Exibir Promoções</a>
+      </div>
+    </li>
 
-	      </div>
-	    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        Promoções
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="new_promotion.php">Nova Promoção</a>
+        <a class="dropdown-item" href="show_promotions.php">Exibir Promoções</a>
 
-			<li class="nav-item dropdown">
-	      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-	        Entrega
-	      </a>
-	      <div class="dropdown-menu">
-	        <a class="dropdown-item" href="new_delivery.php">Nova Área</a>
-	        <a class="dropdown-item" href="show_deliveries.php">Exibir Áreas</a>
+      </div>
+    </li>
 
-	      </div>
-	    </li>
+		<li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        Entrega
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="new_delivery.php">Nova Área</a>
+        <a class="dropdown-item" href="show_deliveries.php">Exibir Áreas</a>
 
-	    <li class="nav-item">
-	    	<a class="nav-link" href="../../../control/UserControl.php?key=logout">
-	    		Sair
-	    	</a>
-	    </li>
+      </div>
+    </li>
 
-	    <li class="nav-item">
-	    	<a class="nav-link" href="../../../index.php">
-	    		Ir para o site
-	    	</a>
-	    </li>
+    <li class="nav-item">
+    	<a class="nav-link" href="../../../control/UserControl.php?key=logout">
+    		Sair
+    	</a>
+    </li>
 
+    <li class="nav-item">
+    	<a class="nav-link" href="../../../index.php">
+    		Ir para o site
+    	</a>
+    </li>
 
 	</ul>
 	</div>

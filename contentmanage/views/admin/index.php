@@ -5,7 +5,7 @@
 	<?php include_once 'include/links.php'; ?>
 </head>
 <body>
-	
+
 <?php include_once 'include/menu.php'; ?>
 
 <div class="container-fluid">
@@ -23,7 +23,14 @@
 					  <strong>Sucesso!</strong> Operação realizada com sucesso.
 					</div>';
 					break;
-				
+
+					case 'nochange':
+						echo '<div class="alert alert-warning alert-dismissible">
+						  <button type="button" class="close" data-dismiss="alert">&times;</button>
+						  <strong>Ops!</strong> Você não fez nenhuma mudança.
+						</div>';
+						break;
+
 				default:
 					# code...
 					break;

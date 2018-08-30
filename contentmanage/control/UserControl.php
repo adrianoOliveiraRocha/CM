@@ -43,6 +43,23 @@ if (isset($_GET['key'])) {
 			header('location:../index.php');
 			break;
 
+		case 'edit':
+			$email = $_POST['email'];
+			$pwd = $_POST['pwd'];
+			$id = $_SESSION['id'];
+			if ($email == $_SESSION['email'] && $pwd == $_SESSION['pwd']) {
+				header('location:../views/admin/index.php?msg=nochange');
+			} else {
+				$q = "update user set email = '{$email}', password = '{$pwd}'
+				where id = {$id}";
+				if (UserDAO::update($q)) {
+					$_SESSION['email'] = $email;
+					$_SESSION['pwd'] = $pwd;
+					header('location:../views/admin/index.php?msg=success');
+				}
+			}
+			break;
+
 		default:
 			# code...
 			break;

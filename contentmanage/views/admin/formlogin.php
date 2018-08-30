@@ -5,9 +5,6 @@
 	<?php include_once 'include/links.php'; ?>
 </head>
 <body>
-
-	
-
 	<div class="panel panel-default form-central"
 	style="width: 50%; margin-left: auto; margin-right: auto;">
 		<?php
@@ -18,7 +15,7 @@
 							Por favor, preencha os dois campos
 						</h3>";
 						break;
-					
+
 					default:
 						# code...
 						break;
