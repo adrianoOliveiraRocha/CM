@@ -34,7 +34,7 @@
 				margin-right: auto;'>
 				<a type='button' class='btn btn-warning'
 				 style='margin-left: auto; margin-right: auto;''
-				 href='../new_category.php'>Voltar</a>
+				 href='../index.php'>Voltar</a>
 				</div>";
 
 		} elseif ($_GET['msg'] == 'prod_empty') {
