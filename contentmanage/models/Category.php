@@ -96,4 +96,13 @@ class Category
 		self::$connect = null;
 		return $info ['howMany'];
 	}
+
+	public static function getCategoryName($id){
+		$q = "select name from category where id = {$id}";
+		self::$connect = Connect::getInstance();
+		$query = self::$connect->query($q);
+		$info = $query->fetch(PDO::FETCH_ASSOC);
+		self::$connect = null;
+		return $info['name'];
+	}
 }

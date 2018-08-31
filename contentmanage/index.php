@@ -26,6 +26,11 @@ if (isset($_GET['page'])) {
 } else {
   $products = Product::getGroupSixProducts();
 }
+// defibe the category name
+$catName = 'Todas as Categorias';
+if ($cat > 0) {
+  $catName = Category::getCategoryName($cat);
+}
 
 ?>
 <!DOCTYPE html>
@@ -233,9 +238,10 @@ if (isset($_GET['page'])) {
 
 				<div class="col-md-9">
 					<div class="titulo_categoria_tab">
-								<h1><span class="icon-check"></span>Todos as Categorias</h1>
-
-							</div>
+						<h1><span class="icon-check"></span>
+              <?php echo $catName; ?>
+            </h1>
+					</div>
 
 					<div class="row" id="products">
             <?php
