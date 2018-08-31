@@ -48,13 +48,23 @@ class Product
 		return $this->image;
 	}
 
-	public static function getGroupSixProducts($offset=0)
+	public static function getGroupSixProducts($offset=0, $cat=0)
 	{
 		$q = null;
 		if ($offset == 0) {
-			$q = "select * from product limit " . LIMIT;
+			if ($cat > 0) {
+				$q = "select * from product where category_id = {$cat} limit " . LIMIT;
+			} else {
+				$q = "select * from product limit " . LIMIT;
+			}
+
 		} else {
-			$q = "select * from product limit ". LIMIT . " offset {$offset}";
+			if ($cat > 0) {
+				$q = "select * from product where category_id = {$cat} limit ". LIMIT . " offset {$offset}";
+			} else {
+				$q = "select * from product limit ". LIMIT . " offset {$offset}";
+			}
+
 		}
 
 		self::$connect = Connect::getInstance ();
@@ -128,8 +138,14 @@ class Product
 		}
 	}
 
-	public static function getNPages(){
-		$q = "select count(*) as nproducts from product";
+	public static function getNPages($cat){
+		$q = null;
+		if ($cat > 0) {
+			$q = "select count(*) as nproducts from product where category_id = {$cat}";
+		} else {
+			$q = "select count(*) as nproducts from product";
+		}
+
 		self::$connect = Connect::getInstance ();
 		$query = self::$connect->query($q);
 		$info = $query->fetch(PDO::FETCH_ASSOC);

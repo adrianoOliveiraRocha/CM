@@ -1,4 +1,5 @@
 <?php
+
 include_once 'config.php';
 include_once MODEL . 'Category.php';
 include_once MODEL . 'Promotion.php';
@@ -8,12 +9,20 @@ $categories = Category::getAllCategories();
 $promotions = Promotion::getAllPromotions();
 
 $products = null;
-$nPages = Product::getNPages();
+
+$page = 1;
+$cat = 0;
+
+if (isset($_GET['cat'])) {
+  $cat = (int) $_GET['cat'];
+}
+$nPages = Product::getNPages($cat);
 
 if (isset($_GET['page'])) {
   $page = (int) $_GET['page'];
   $valueOfseet = ($page - 1) * 6;
-  $products = Product::getGroupSixProducts($offset=$valueOfseet);
+  $valueCat = $cat;
+  $products = Product::getGroupSixProducts($offset=$valueOfseet, $cat=$valueCat);
 } else {
   $products = Product::getGroupSixProducts();
 }
@@ -186,21 +195,32 @@ if (isset($_GET['page'])) {
                 Promoções
               </a>
 
-              <a class="nav-item nav-link active Tabs_produtos" id="nav-home-tab"
-              data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home"
-              aria-selected="true">
+              <a class="nav-item nav-link active Tabs_produtos"
+              role="tab"
+              href="index.php#products">
                 Todas as Categorias
               </a>
 
               <?php
+
               foreach ($categories as $category) {
-                echo "
-                <a class='nav-item nav-link active Tabs_produtos' id='nav-home-tab'
-                data-toggle='tab' href=''#nav-home' role='tab' aria-controls='nav-home'
-                aria-selected='true'>
-                  {$category['name']}
-                </a>
-                ";
+                if ($category['id'] == $cat) {
+                  echo "
+                  <a class='nav-item nav-link active Tabs_produtos'
+                  role='tab'
+                  href='index.php?page={$page}&cat={$category['id']}#products'>
+                    {$category['name']}
+                  </a>
+                  ";
+                } else {
+                  echo "
+                  <a class='nav-item nav-link active Tabs_produtos'
+                  role='tab'
+                  href='index.php?page=1&cat={$category['id']}#products'>
+                    {$category['name']}
+                  </a>
+                  ";
+                }
               }
                ?>
 
@@ -248,12 +268,22 @@ if (isset($_GET['page'])) {
 
             <?php
             for ($i=1; $i <= $nPages; $i++) {
-              echo "
-              <li class='page-item'>
-                <a class='page-link' href='index.php?page={$i}#products'>
-                  {$i}
-                </a>
-              </li>";
+              if ($i == $page) {
+                echo "
+                <li class='page-item active'>
+                  <a class='page-link' href='index.php?page={$i}&cat={$cat}#products'>
+                    {$i}
+                  </a>
+                </li>";
+              } else {
+                echo "
+                <li class='page-item'>
+                  <a class='page-link' href='index.php?page={$i}&cat={$cat}#products'>
+                    {$i}
+                  </a>
+                </li>";
+              }
+
             }
              ?>
          </ul>
