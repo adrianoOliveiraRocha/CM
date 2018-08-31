@@ -48,8 +48,7 @@ class Product
 		return $this->image;
 	}
 
-	public static function getGroupSixProducts($offset=0, $cat=0)
-	{
+	public static function getGroupSixProducts($offset=0, $cat=0)	{
 		$q = null;
 		if ($offset == 0) {
 			if ($cat > 0) {

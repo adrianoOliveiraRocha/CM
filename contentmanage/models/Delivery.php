@@ -50,7 +50,7 @@ class Delivery
 		}
 	}
 
-	public static function getAllDeliveries($offset=0)
+	public static function getAllDeliveries()
 	{
 		self::$connect = Connect::getInstance ();
 		$response = self::$connect->query ( "select * from delivery" );

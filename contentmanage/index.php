@@ -6,30 +6,46 @@ include_once MODEL . 'Promotion.php';
 include_once MODEL . 'Product.php';
 
 $categories = Category::getAllCategories();
-$promotions = Promotion::getAllPromotions();
+$topPpromotions = Promotion::getTopPromotions();
 
-$products = null;
+if (isset($_GET['promo'])) { // show promotions
+  $catName = 'Promoções';
+  $page = 1;
+  $nPages = Promotion::getNPages();
+  if (isset($_GET['page'])) {
+    $page = (int) $_GET['page'];
+    $valueOfseet = ($page - 1) * 6;
+    $promotions = Promotion::getGroupSixPromotions($offset=$valueOfseet);
+  } else {
+    $promotions = Promotion::getGroupSixPromotions();
+  }
 
-$page = 1;
-$cat = 0;
+} else { //show products
 
-if (isset($_GET['cat'])) {
-  $cat = (int) $_GET['cat'];
-}
-$nPages = Product::getNPages($cat);
+  $products = null;
 
-if (isset($_GET['page'])) {
-  $page = (int) $_GET['page'];
-  $valueOfseet = ($page - 1) * 6;
-  $valueCat = $cat;
-  $products = Product::getGroupSixProducts($offset=$valueOfseet, $cat=$valueCat);
-} else {
-  $products = Product::getGroupSixProducts();
-}
-// defibe the category name
-$catName = 'Todas as Categorias';
-if ($cat > 0) {
-  $catName = Category::getCategoryName($cat);
+  $page = 1;
+  $cat = 0;
+
+  if (isset($_GET['cat'])) {
+    $cat = (int) $_GET['cat'];
+  }
+  $nPages = Product::getNPages($cat);
+
+  if (isset($_GET['page'])) {
+    $page = (int) $_GET['page'];
+    $valueOfseet = ($page - 1) * 6;
+    $valueCat = $cat;
+    $products = Product::getGroupSixProducts($offset=$valueOfseet, $cat=$valueCat);
+  } else {
+    $products = Product::getGroupSixProducts();
+  }
+  // defibe the category name
+  $catName = 'Todas as Categorias';
+  if ($cat > 0) {
+    $catName = Category::getCategoryName($cat);
+  }
+
 }
 
 ?>
@@ -125,7 +141,7 @@ if ($cat > 0) {
 		<div class="container">
 			<div class="row">
         <?php
-        foreach ($promotions as $promotion) {
+        foreach ($topPpromotions as $promotion) {
           echo "
           <div class='col-md-3 banners_promocoes'>
   					<img class='img-responsive' src='upload/{$promotion['image']}'/>
@@ -161,7 +177,7 @@ if ($cat > 0) {
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12 btn_fretes">
-				<a class="img-responsive" href="static/tabelaentregas.html"><img class="zoom_in" src="static/imagens/btn_fretes.jpg"/></a>
+				<a class="img-responsive" href="views/core/tabelaentregas.php"><img class="zoom_in" src="static/imagens/btn_fretes.jpg"/></a>
 
 			</div>
 
@@ -193,10 +209,9 @@ if ($cat > 0) {
 					<nav>
 						<div  class="nav flex-column" id="nav-tab" role="tablist" aria-orientation="vertical">
 
-							<a class="nav-item nav-link active Tabs_produtos" id="nav-home-tab"
-              data-toggle="tab" href="control/PromotionControl.php?key=allpromotions"
-              role="tab" aria-controls="nav-home"
-              aria-selected="true">
+              <a class="nav-item nav-link active Tabs_produtos"
+              role="tab"
+              href="index.php?page=1&promo#products">
                 Promoções
               </a>
 
@@ -243,56 +258,112 @@ if ($cat > 0) {
             </h1>
 					</div>
 
-					<div class="row" id="products">
-            <?php
-            foreach ($products as $product) {
-              echo "
-              <div class='col-md-4 produtos'>
-                <div class='cubo_produto'>
-                  <img class='img-responsive' src='upload/{$product['image']}'>
-  								<h3>{$product['description']}</h3>
-  								<div class='cod_preco_prod' title='Nº Referência'>
-  									<p id='cod_prod'>Ref: {$product['id']}</p>
+          <?php if ($products) {
+            ?>
+  					<div class="row" id="products">
+              <?php
+              foreach ($products as $product) {
+                echo "
+                <div class='col-md-4 produtos'>
+                  <div class='cubo_produto'>
+                    <img class='img-responsive' src='upload/{$product['image']}'>
+    								<h3>{$product['description']}</h3>
+    								<div class='cod_preco_prod' title='Nº Referência'>
+    									<p id='cod_prod'>Ref: {$product['id']}</p>
 
-  								</div>
-  								<div class='cod_preco_prod'>
-  									<p id='preco_prod'>R$ {$product['value']}</p>
-                  </div>
-  								<div class='btn_comprar'>
-  									<a href='https://api.whatsapp.com/send?phone=558588654037'>
-  										Fazer Pedido
-  										<span class='icon-right-open'></span>
-  									</a>
+    								</div>
+    								<div class='cod_preco_prod'>
+    									<p id='preco_prod'>R$ {$product['value']}</p>
+                    </div>
+    								<div class='btn_comprar'>
+    									<a href='https://api.whatsapp.com/send?phone=558588654037'>
+    										Fazer Pedido
+    										<span class='icon-right-open'></span>
+    									</a>
+                    </div>
                   </div>
                 </div>
-              </div>
-              ";
-            }
-             ?>
-					</div>
-          <ul class="pagination" style="margin: 2%;">
-
-            <?php
-            for ($i=1; $i <= $nPages; $i++) {
-              if ($i == $page) {
-                echo "
-                <li class='page-item active'>
-                  <a class='page-link' href='index.php?page={$i}&cat={$cat}#products'>
-                    {$i}
-                  </a>
-                </li>";
-              } else {
-                echo "
-                <li class='page-item'>
-                  <a class='page-link' href='index.php?page={$i}&cat={$cat}#products'>
-                    {$i}
-                  </a>
-                </li>";
+                ";
               }
+               ?>
+  					</div>
+            <ul class="pagination" style="margin: 2%;">
 
-            }
-             ?>
-         </ul>
+              <?php //pagination for products
+              for ($i=1; $i <= $nPages; $i++) {
+                if ($i == $page) {
+                  echo "
+                  <li class='page-item active'>
+                    <a class='page-link' href='index.php?page={$i}&cat={$cat}#products'>
+                      {$i}
+                    </a>
+                  </li>";
+                } else {
+                  echo "
+                  <li class='page-item'>
+                    <a class='page-link' href='index.php?page={$i}&cat={$cat}#products'>
+                      {$i}
+                    </a>
+                  </li>";
+                }
+
+              }
+               ?>
+           </ul>
+
+       <?php } else {
+         ?>
+         <div class="row" id="products">
+           <?php
+           foreach ($promotions as $promotion) {
+             echo "
+             <div class='col-md-4 produtos'>
+               <div class='cubo_produto'>
+                 <img class='img-responsive' src='upload/{$promotion['image']}'>
+                 <h3>{$promotion['description']}</h3>
+                 <div class='cod_preco_prod' title='Nº Referência'>
+                   <p id='cod_prod'>Ref: {$promotion['id']}</p>
+
+                 </div>
+
+                 <div class='btn_comprar'>
+                   <a href='https://api.whatsapp.com/send?phone=558588654037'>
+                     Fazer Pedido
+                     <span class='icon-right-open'></span>
+                   </a>
+                 </div>
+               </div>
+             </div>
+             ";
+           }
+            ?>
+         </div>
+         <ul class="pagination" style="margin: 2%;">
+
+           <?php //pagination for promotions
+           for ($i=1; $i <= $nPages; $i++) {
+             if ($i == $page) {
+               echo "
+               <li class='page-item active'>
+                 <a class='page-link' href='index.php?page={$i}&promo#products'>
+                   {$i}
+                 </a>
+               </li>";
+             } else {
+               echo "
+               <li class='page-item'>
+                 <a class='page-link' href='index.php?page={$i}&promo#products'>
+                   {$i}
+                 </a>
+               </li>";
+             }
+
+           }
+            ?>
+        </ul>
+       <?php } ?>
+
+
 				</div>
 
 
