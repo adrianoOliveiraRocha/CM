@@ -1,7 +1,8 @@
 <?php
-
+include_once CONNECT . 'connect.php';
 
 class User {
+	private static $connect;
 
 	private $id;
 	private $username;
@@ -39,7 +40,27 @@ class User {
 		return $this->password;
 	}
 
-	public static function login($email, $psw) {
-		return UserDao::userValidation($email, $psw);
+	public static function login($email, $password){
+
+		self::$connect = Connect::getInstance();
+		$statement = "select id from user " .
+		"where email = '$email' " .
+		"and password = '$password'";
+
+		$query = self::$connect->query($statement);
+		$info = $query->fetch(PDO::FETCH_ASSOC);
+		return $info['id'];
+	}
+
+	public static function update($q) {
+		try {
+			self::$connect = Connect::getInstance();
+			$stmt = self::$connect->prepare( $q );
+			$stmt->execute();
+			self::$connect = null;
+			return true;
+		} catch (Exception $e) {
+			return false;
+		}
 	}
 }

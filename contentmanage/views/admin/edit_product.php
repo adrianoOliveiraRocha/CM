@@ -9,12 +9,12 @@
 
 	<?php
 		include_once '../../config.php';
-		include_once DAO . 'ProductDAO.php';
-    include_once DAO . 'CategoryDAO.php';
+		include_once MODEL . 'Category.php';
+		include_once MODEL . 'Product.php';
 
-		$product = ProductDAO::getThisProduct($_GET['id']);
-    $categories = CategoryDAO::getAllCategories();
-    $currentCategory = CategoryDAO::getThisCategory($product['category_id']);
+		$product = Product::getThisProduct($_GET['id']);
+    $categories = Category::getAllCategories();
+    $currentCategory = Category::getThisCategory($product['category_id']);
 
 	?>
 

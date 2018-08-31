@@ -3,8 +3,7 @@
 session_start();
 include_once '../config.php';
 include_once MODEL . 'Category.php';
-include_once DAO . 'CategoryDAO.php';
-include_once DAO . 'ProductDAO.php';
+include_once MODEL . 'Product.php';
 
 if (isset($_GET['key'])) {
 
@@ -28,7 +27,7 @@ if (isset($_GET['key'])) {
 				$id = $_POST['id'];
 				$name = $_POST['category_name'];
 				$q = "update category set name = '$name' where id = $id";
-				if (CategoryDAO::update($q)) {
+				if (Category::update($q)) {
 					header('location:../views/admin/index.php?msg=success');
 				} else {
 					header('location:../views/admin/include/error.php?msg=nosave');
@@ -40,13 +39,13 @@ if (isset($_GET['key'])) {
 
 		case 'del':
 			$id = $_GET['id'];
-			$howMany = CategoryDAO::howManyProducts($id);
+			$howMany = Category::howManyProducts($id);
 			if ($howMany > 0) { //there is products in this category
 				$q = "delete from product where category_id = {$id}";
-				ProductDAO::update($q);
+				Product::update($q);
 			}
 
-			if (CategoryDAO::delete($id)) {
+			if (Category::delete($id)) {
 				header('location:../views/admin/index.php?msg=success');
 			} else {
 				header('location:../views/admin/include/error.php?msg=nodel');

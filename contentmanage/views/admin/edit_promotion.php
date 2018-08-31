@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Nova Categoria</title>
+	<title>Editar Promoção</title>
 	<?php include_once 'include/links.php' ?>
 </head>
 <body>
@@ -9,9 +9,9 @@
 
 	<?php
 		include_once '../../config.php';
-		include_once DAO . 'PromotionDAO.php';
+		include_once MODEL . 'Promotion.php';
 
-		$promotion = PromotionDAO::getThisPromotion($_GET['id']);
+		$promotion = Promotion::getThisPromotion($_GET['id']);
 
 	?>
 
@@ -19,7 +19,7 @@
 		<div class="panel-body"
 			style="width: 50%; margin-left: auto;
 			margin-right: auto; margin-top: 5%;">
-			<h3>Área Administrativa -> Editar Produto</h3>
+			<h3>Área Administrativa -> Editar Promoção</h3>
 
 			<form action="../../control/PromotionControl.php?key=edit"
 			method="POST" enctype="multipart/form-data">

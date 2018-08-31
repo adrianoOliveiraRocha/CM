@@ -24,9 +24,9 @@
 
 	<?php
 		include_once '../../config.php';
-		include_once DAO . 'DeliveryDAO.php';
+		include_once MODEL . 'Delivery.php';
 
-		$deliveries = DeliveryDAO::getAllDeliveries();
+		$deliveries = Delivery::getAllDeliveries();
 
 	?>
 

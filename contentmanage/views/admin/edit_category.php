@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Nova Categoria</title>
+	<title>Editar Categoria</title>
 	<?php include_once 'include/links.php' ?>
 </head>
 <body>
@@ -9,8 +9,8 @@
 
 	<?php
 		include_once '../../config.php';
-		include_once DAO . 'CategoryDAO.php';
-		$category = CategoryDAO::getThisCategory($_GET['id']);
+		include_once MODEL . 'Category.php';
+		$category = Category::getThisCategory($_GET['id']);
 	?>
 
 	<div class="container-fluid">

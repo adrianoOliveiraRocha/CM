@@ -9,8 +9,8 @@
 
 	<?php
 		include_once '../../config.php';
-		include_once DAO . 'DeliveryDAO.php';
-		$delivery = DeliveryDAO::getThisDelivery($_GET['id']);
+		include_once MODEL . 'Delivery.php';
+		$delivery = Delivery::getThisDelivery($_GET['id']);
 	?>
 
 	<div class="container-fluid">

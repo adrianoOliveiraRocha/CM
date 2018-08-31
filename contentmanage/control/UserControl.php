@@ -3,7 +3,6 @@
 session_start();
 include_once '../config.php';
 include_once MODEL . 'User.php';
-include_once DAO . 'UserDAO.php';
 
 if (isset($_GET['key'])) {
 
@@ -52,7 +51,7 @@ if (isset($_GET['key'])) {
 			} else {
 				$q = "update user set email = '{$email}', password = '{$pwd}'
 				where id = {$id}";
-				if (UserDAO::update($q)) {
+				if (User::update($q)) {
 					$_SESSION['email'] = $email;
 					$_SESSION['pwd'] = $pwd;
 					header('location:../views/admin/index.php?msg=success');

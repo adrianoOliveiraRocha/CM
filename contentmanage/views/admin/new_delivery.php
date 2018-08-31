@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Nova Categoria</title>
+	<title>Nova Área de Entrega</title>
 	<?php include_once 'include/links.php' ?>
 </head>
 <body>
@@ -12,7 +12,7 @@
 			style="width: 50%; margin-left: auto;
 			margin-right: auto; margin-top: 5%;">
 			<h3>Área Administrativa -> Nova Área de Entrega</h3>
-      
+
 			<form action="../../control/DeliveryControl.php?key=newdelivery"
 			method="POST">
 

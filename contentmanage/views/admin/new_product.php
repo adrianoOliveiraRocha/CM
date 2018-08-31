@@ -9,9 +9,9 @@
 
 	<?php
 		include_once '../../config.php';
-		include_once DAO . 'CategoryDAO.php';
+		include_once MODEL . 'Category.php';
 
-		$categories = CategoryDAO::getAllCategories();
+		$categories = Category::getAllCategories();
 
 	?>
 

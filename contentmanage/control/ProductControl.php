@@ -23,7 +23,7 @@ if (isset($_GET['key'])) {
 			$product->setDescription($description);
 			$product->setImage($imageName);
 
-			if (ProductDAO::save($product)) {
+			if ($product->save()) {
 				header('location:../views/admin/index.php?msg=success');
 			} else {
 				header('location:../views/admin/include/error.php?msg=nosave');
@@ -40,7 +40,7 @@ if (isset($_GET['key'])) {
 				$image = $_FILES['image'];
 				$q = "";
 				if (!empty($image['name'])) { //image sended
-					$product = ProductDAO::getThisProduct($idProduct);
+					$product = Product::getThisProduct($idProduct);
 					$currentImageName = $product['image'];
 					unlink(UPLOAD . $currentImageName);
 					$imageName = Utils::uploadImage($image);
@@ -52,7 +52,7 @@ if (isset($_GET['key'])) {
 					category_id = {$idCategory}, value='{$value}'
 					where id = {$idProduct}";
 				}
-				if (ProductDAO::update($q)) {
+				if (Product::update($q)) {
 					header('location:../views/admin/index.php?msg=success');
 				} else {
 					header('location:../views/admin/include/error.php?msg=nosave');
@@ -65,10 +65,10 @@ if (isset($_GET['key'])) {
 
 		case 'del':
 			$idProduct = $_GET['id'];
-			$product = ProductDAO::getThisProduct($idProduct);
+			$product = Product::getThisProduct($idProduct);
 			$currentImageName = $product['image'];
 			unlink(UPLOAD . $currentImageName);
-			if (ProductDAO::delete($idProduct)) {
+			if (Product::delete($idProduct)) {
 				header('location:../views/admin/index.php?msg=success');
 			} else {
 				header('location:../views/admin/include/error.php?msg=nodel');

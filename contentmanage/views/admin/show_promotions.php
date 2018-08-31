@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Exibir Categorias</title>
+	<title>Exibir Promoções</title>
 	<?php include_once 'include/links.php' ?>
 	<!-- datatable -->
 	<script type="text/javascript" language="javascript" class="init">
@@ -24,9 +24,9 @@
 
 	<?php
 		include_once '../../config.php';
-		include_once DAO . 'PromotionDAO.php';
+		include_once MODEL . 'Promotion.php';
 
-		$promotions = PromotionDAO::getAllPromotions();
+		$promotions = Promotion::getAllPromotions();
 
 	?>
 

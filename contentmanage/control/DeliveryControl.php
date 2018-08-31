@@ -3,7 +3,6 @@
 session_start();
 include_once '../config.php';
 include_once MODEL . 'Delivery.php';
-include_once DAO . 'DeliveryDAO.php';
 
 if (isset($_GET['key'])) {
 
@@ -15,7 +14,7 @@ if (isset($_GET['key'])) {
 				$delivery = new Delivery();
 				$delivery->setNeighborHood($_POST['neighborhood']);
         $delivery->setValue($_POST['value']);
-				if (DeliveryDAO::save($delivery)) {
+				if ($delivery->save()) {
 					header('location:../views/admin/index.php?msg=success');
 				} else {
 					header('location:../views/admin/include/error.php?msg=nosave');
@@ -32,7 +31,7 @@ if (isset($_GET['key'])) {
 				$q = "update delivery set neighborhood = '{$neighborhood}',
         value ='{$value}' where id = $id";
         echo $q;
-				if (DeliveryDAO::update($q)) {
+				if (Delivery::update($q)) {
 					header('location:../views/admin/index.php?msg=success');
 				} else {
 					header('location:../views/admin/include/error.php?msg=nosave');
@@ -48,7 +47,7 @@ if (isset($_GET['key'])) {
 		case 'del':
 			$id = $_GET['id'];
 
-			if (DeliveryDAO::delete($id)) {
+			if (Delivery::delete($id)) {
 				header('location:../views/admin/index.php?msg=success');
 			} else {
 				header('location:../views/admin/include/error.php?msg=nodel');

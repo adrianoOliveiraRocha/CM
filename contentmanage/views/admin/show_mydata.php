@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Nova Categoria</title>
+	<title>Meus Dados</title>
 	<?php include_once 'include/links.php' ?>
 </head>
 <body>

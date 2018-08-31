@@ -3,7 +3,6 @@ session_start();
 
 include_once '../config.php';
 include_once MODEL . 'Promotion.php';
-include_once DAO . 'PromotionDAO.php';
 include_once CONNECT . 'Utils.php';
 
 if (isset($_GET['key'])) {
@@ -19,7 +18,7 @@ if (isset($_GET['key'])) {
 			$promotion->setDescription($description);
 			$promotion->setImage($imageName);
 
-			if (PromotionDAO::save($promotion)) {
+			if ($promotion->save()) {
 				header('location:../views/admin/index.php?msg=success');
 			} else {
 				header('location:../views/admin/include/error.php?msg=nosave');
@@ -37,7 +36,7 @@ if (isset($_GET['key'])) {
 
 				$q = "";
 				if (!empty($image['name'])) { //image sended
-					$promotion = PromotionDAO::getThisPromotion($idPromotion);
+					$promotion = Promotion::getThisPromotion($idPromotion);
 					$currentImageName = $promotion['image'];
 					unlink(UPLOAD . $currentImageName);
 					$imageName = Utils::uploadImage($image);
@@ -48,7 +47,7 @@ if (isset($_GET['key'])) {
           where id = {$idPromotion}";
 				}
         echo $q;
-				if (PromotionDAO::update($q)) {
+				if (Promotion::update($q)) {
 					header('location:../views/admin/index.php?msg=success');
 				} else {
 					header('location:../views/admin/include/error.php?msg=nosave');
@@ -61,14 +60,18 @@ if (isset($_GET['key'])) {
 
 		case 'del':
 			$idPromotion = $_GET['id'];
-			$promotion = PromotionDAO::getThisPromotion($idPromotion);
+			$promotion = Promotion::getThisPromotion($idPromotion);
 			$currentImageName = $promotion['image'];
       unlink(UPLOAD . $currentImageName);
-      if (PromotionDAO::delete($idPromotion)) {
+      if (Promotion::delete($idPromotion)) {
 				header('location:../views/admin/index.php?msg=success');
 			} else {
 				header('location:../views/admin/include/error.php?msg=nodel');
 			}
+			break;
+
+		case 'allpromotions':
+			// code...
 			break;
 
 		default:
