@@ -27,10 +27,10 @@ if (isset($_GET['key'])) {
 			if ($_POST['neighborhood']) {
 				$id = $_POST['id'];
 				$neighborhood = $_POST['neighborhood'];
-        $value = $_POST['value'];
+       				$value = $_POST['value'];
 				$q = "update delivery set neighborhood = '{$neighborhood}',
-        value ='{$value}' where id = $id";
-        echo $q;
+        			value ='{$value}' where id = $id";
+        
 				if (Delivery::update($q)) {
 					header('location:../views/admin/index.php?msg=success');
 				} else {

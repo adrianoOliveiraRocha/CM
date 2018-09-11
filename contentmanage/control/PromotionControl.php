@@ -44,9 +44,9 @@ if (isset($_GET['key'])) {
 					image = '{$imageName}' where id = {$idPromotion}";
 				} else {
 					$q = "update promotion set description = '{$description}'
-          where id = {$idPromotion}";
+          				where id = {$idPromotion}";
 				}
-        echo $q;
+       
 				if (Promotion::update($q)) {
 					header('location:../views/admin/index.php?msg=success');
 				} else {

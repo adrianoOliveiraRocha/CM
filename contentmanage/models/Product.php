@@ -1,7 +1,10 @@
 <?php
 
 include_once CONNECT . 'connect.php';
-define( 'LIMIT', 6 );
+
+if (!defined('LIMIT')) {
+	define( 'LIMIT', 6 );
+}
 
 class Product
 {
@@ -97,6 +100,14 @@ class Product
 		return $products;
 	}
 
+	public static function getAllProductsThisCategory($idCategory) {
+		self::$connect = Connect::getInstance ();
+		$response = self::$connect->query ( "select * from product where category_id = {$idCategory}" );
+		$products = $response->fetchAll ( PDO::FETCH_ASSOC );
+		self::$connect = null;
+		return $products;
+	}
+
 	public static function getThisProduct($id) {
 		self::$connect = Connect::getInstance ();
 		$q = "select * from product where id = :id";
@@ -125,7 +136,7 @@ class Product
 		}
 	}
 
-	public function delete($id) {
+	public static function delete($id) {
 		self::$connect = Connect::getInstance ();
 		$stmt = self::$connect->prepare ( "delete from product where id = {$id}" );
 		$stmt->execute ();

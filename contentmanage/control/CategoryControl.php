@@ -40,9 +40,16 @@ if (isset($_GET['key'])) {
 		case 'del':
 			$id = $_GET['id'];
 			$howMany = Category::howManyProducts($id);
-			if ($howMany > 0) { //there is products in this category
+			if ($howMany > 0) { //there are products in this category
+
+				$products = Product::getAllProductsThisCategory($id);
+				foreach ($products as $product) {
+					unlink(UPLOAD . $product['image']);
+				}
+
 				$q = "delete from product where category_id = {$id}";
 				Product::update($q);
+
 			}
 
 			if (Category::delete($id)) {

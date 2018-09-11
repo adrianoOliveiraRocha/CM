@@ -1,9 +1,7 @@
 <?php
-session_start();
 
 include_once '../config.php';
 include_once MODEL . 'Product.php';
-include_once DAO . 'ProductDAO.php';
 include_once CONNECT . 'Utils.php';
 
 if (isset($_GET['key'])) {
@@ -48,9 +46,8 @@ if (isset($_GET['key'])) {
 					category_id = {$idCategory}, image = '{$imageName}',
 					value='{$value}' where id = {$idProduct}";
 				} else {
-					$q = "update product set description = '{$description}',
-					category_id = {$idCategory}, value='{$value}'
-					where id = {$idProduct}";
+					$q = "update product set description = '{$description}', category_id = {$idCategory}, 
+					value='{$value}' where id = {$idProduct}";
 				}
 				if (Product::update($q)) {
 					header('location:../views/admin/index.php?msg=success');

@@ -1,6 +1,5 @@
 <?php
 
-session_start();
 include_once '../config.php';
 include_once MODEL . 'User.php';
 
@@ -8,6 +7,7 @@ if (isset($_GET['key'])) {
 
 	switch ($_GET['key']) {
 		case 'enter':
+			session_start();
 			if (isset($_SESSION['loged'])) {
 				if ($_SESSION['loged'] == true) {
 					header('location:../views/admin/index.php');
@@ -25,6 +25,7 @@ if (isset($_GET['key'])) {
 			} else {
 				$id = User::login($_POST['email'], $_POST['pwd']);
 				if ($id) {
+					session_start();
 					$_SESSION['loged'] = true;
 					$_SESSION['id'] = $id;
 					$_SESSION['email'] = $_POST['email'];
@@ -34,10 +35,12 @@ if (isset($_GET['key'])) {
 				} else {
 					header('location:../views/admin/include/error.php?msg=notfound');
 				}
+
 			}
 			break;
 
 		case 'logout':
+			session_start();
 			session_destroy();
 			header('location:../index.php');
 			break;

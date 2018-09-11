@@ -7,8 +7,6 @@ class Utils {
 
 		$uploadDirectory = UPLOAD;
 
-		$fileExtensions = ['jpeg','jpg','png']; // Get all the file extensions
-
 		$fileName = $image['name'];
 		$fileSize = $image['size'];
 		$fileTmpName  = $image['tmp_name'];

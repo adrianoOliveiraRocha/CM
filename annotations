@@ -1,0 +1,20 @@
+graficarapida:
+
+	login: graficarapida@grafky.com.br
+	pass: JK302815
+
+
+	access with ssh:
+	ssh -p 2222 k97inuno@108.167.188.244
+	response: If you need shell access please contact support
+
+
+atrativapropaganda:
+	ftp:
+		ftp.atrativapropaganda.com.br
+		atrat743
+		redeasd219040
+
+o nome do banco: atrat743_contentmanage
+usuario: atrat743_adriano
+senha: 453231

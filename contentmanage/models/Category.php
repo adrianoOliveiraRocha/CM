@@ -75,7 +75,7 @@ class Category
 		}
 	}
 
-	public function delete($id) {
+	public static function delete($id) {
 		self::$connect = Connect::getInstance ();
 		$stmt = self::$connect->prepare ( "delete from category where id = {$id}" );
 		$stmt->execute ();

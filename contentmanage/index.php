@@ -224,24 +224,37 @@ if (isset($_GET['promo'])) { // show promotions
               <?php
 
               foreach ($categories as $category) {
-                if ($category['id'] == $cat) {
-                  echo "
-                  <a class='nav-item nav-link active Tabs_produtos'
-                  role='tab'
-                  href='index.php?page={$page}&cat={$category['id']}#products'>
-                    {$category['name']}
-                  </a>
-                  ";
-                } else {
-                  echo "
-                  <a class='nav-item nav-link active Tabs_produtos'
-                  role='tab'
-                  href='index.php?page=1&cat={$category['id']}#products'>
-                    {$category['name']}
-                  </a>
-                  ";
-                }
+              	if (isset($cat)) {
+              		if ($category['id'] == $cat) {
+	                  echo "
+	                  <a class='nav-item nav-link active Tabs_produtos'
+	                  role='tab'
+	                  href='index.php?page={$page}&cat={$category['id']}#products'>
+	                    {$category['name']}
+	                  </a>
+	                  ";
+	                } else {
+	                  echo "
+	                  <a class='nav-item nav-link active Tabs_produtos'
+	                  role='tab'
+	                  href='index.php?page=1&cat={$category['id']}#products'>
+	                    {$category['name']}
+	                  </a>
+	                  ";
+	                }
+              	} else {
+              		echo "
+	                  <a class='nav-item nav-link active Tabs_produtos'
+	                  role='tab'
+	                  href='index.php?page=1&cat={$category['id']}#products'>
+	                    {$category['name']}
+	                  </a>
+	                  ";
+              	}
+
               }
+
+
                ?>
 
 						</div>
@@ -258,33 +271,37 @@ if (isset($_GET['promo'])) { // show promotions
             </h1>
 					</div>
 
-          <?php if ($products) {
+          <?php 
+          if (isset($products)) {
             ?>
   					<div class="row" id="products">
               <?php
-              foreach ($products as $product) {
-                echo "
-                <div class='col-md-4 produtos'>
-                  <div class='cubo_produto'>
-                    <img class='img-responsive' src='upload/{$product['image']}'>
-    								<h3>{$product['description']}</h3>
-    								<div class='cod_preco_prod' title='Nº Referência'>
-    									<p id='cod_prod'>Ref: {$product['id']}</p>
+              if ($products) {
 
-    								</div>
-    								<div class='cod_preco_prod'>
-    									<p id='preco_prod'>R$ {$product['value']}</p>
-                    </div>
-    								<div class='btn_comprar'>
-    									<a href='https://api.whatsapp.com/send?phone=558588654037'>
-    										Fazer Pedido
-    										<span class='icon-right-open'></span>
-    									</a>
-                    </div>
-                  </div>
-                </div>
-                ";
-              }
+	              foreach ($products as $product) {
+	                echo "
+	                <div class='col-md-4 produtos'>
+	                  <div class='cubo_produto'>
+	                    <img class='img-responsive' src='upload/{$product['image']}'>
+	    								<h3>{$product['description']}</h3>
+	    								<div class='cod_preco_prod' title='Nº Referência'>
+	    									<p id='cod_prod'>Ref: {$product['id']}</p>
+
+	    								</div>
+	    								<div class='cod_preco_prod'>
+	    									<p id='preco_prod'>R$ {$product['value']}</p>
+	                    </div>
+	    								<div class='btn_comprar'>
+	    									<a href='https://api.whatsapp.com/send?phone=558588654037'>
+	    										Fazer Pedido
+	    										<span class='icon-right-open'></span>
+	    									</a>
+	                    </div>
+	                  </div>
+	                </div>
+	                ";
+	              }
+              	}
                ?>
   					</div>
             <ul class="pagination" style="margin: 2%;">
@@ -315,27 +332,31 @@ if (isset($_GET['promo'])) { // show promotions
          ?>
          <div class="row" id="products">
            <?php
-           foreach ($promotions as $promotion) {
-             echo "
-             <div class='col-md-4 produtos'>
-               <div class='cubo_produto'>
-                 <img class='img-responsive' src='upload/{$promotion['image']}'>
-                 <h3>{$promotion['description']}</h3>
-                 <div class='cod_preco_prod' title='Nº Referência'>
-                   <p id='cod_prod'>Ref: {$promotion['id']}</p>
 
-                 </div>
+           if (isset($promotions)) {
+           	
+	           foreach ($promotions as $promotion) {
+	             echo "
+	             <div class='col-md-4 produtos'>
+	               <div class='cubo_produto'>
+	                 <img class='img-responsive' src='upload/{$promotion['image']}'>
+	                 <h3>{$promotion['description']}</h3>
+	                 <div class='cod_preco_prod' title='Nº Referência'>
+	                   <p id='cod_prod'>Ref: {$promotion['id']}</p>
 
-                 <div class='btn_comprar'>
-                   <a href='https://api.whatsapp.com/send?phone=558588654037'>
-                     Fazer Pedido
-                     <span class='icon-right-open'></span>
-                   </a>
-                 </div>
-               </div>
-             </div>
-             ";
-           }
+	                 </div>
+
+	                 <div class='btn_comprar'>
+	                   <a href='https://api.whatsapp.com/send?phone=558588654037'>
+	                     Fazer Pedido
+	                     <span class='icon-right-open'></span>
+	                   </a>
+	                 </div>
+	               </div>
+	             </div>
+	             ";
+	           }
+       		}
             ?>
          </div>
          <ul class="pagination" style="margin: 2%;">

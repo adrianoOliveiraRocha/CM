@@ -30,7 +30,7 @@
             <input class="form-check-input" type="checkbox"> Lembre me
           </label>
         </div>
-        <button type="submit" class="btn btn-primary">Editar</button>
+        <button type="submit" class="btn btn-primary">Alterar</button>
       </form>
 
 		</div>

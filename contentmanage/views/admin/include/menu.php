@@ -1,14 +1,15 @@
 <?php
-session_start();
 
+@session_start();
 
 if (isset($_SESSION['loged'])) {
 	if ($_SESSION['loged'] == false) {
 		header('location:include/error.php?msg=forbiden');
 	}
 } else {
-	header('location:include/error.php?msg=forbidden');
+	exit(header('location:include/error.php?msg=forbidden'));
 }
+
 
 ?>
 
@@ -82,13 +83,13 @@ if (isset($_SESSION['loged'])) {
     </li>
 
     <li class="nav-item">
-    	<a class="nav-link" href="../../../control/UserControl.php?key=logout">
+    	<a class="nav-link" href="../../control/UserControl.php?key=logout">
     		Sair
     	</a>
     </li>
 
     <li class="nav-item">
-    	<a class="nav-link" href="../../../index.php">
+    	<a class="nav-link" href="../../index.php">
     		Ir para o site
     	</a>
     </li>
