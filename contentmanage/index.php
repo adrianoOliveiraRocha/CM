@@ -4,9 +4,11 @@ include_once 'config.php';
 include_once MODEL . 'Category.php';
 include_once MODEL . 'Promotion.php';
 include_once MODEL . 'Product.php';
+include_once MODEL . 'Video.php';
 
 $categories = Category::getAllCategories();
 $topPpromotions = Promotion::getTopPromotions();
+$videos = Video::getAllVideos();
 
 if (isset($_GET['promo'])) { // show promotions
   $catName = 'Promoções';
@@ -409,22 +411,20 @@ if (isset($_GET['promo'])) { // show promotions
 			<div class="container"><div class="row"><div class="espaco-linha-1"></div></div></div> <!-- Espaço 01 -->
 
 			<div class="row">
-				<div class="col-md-3 videos">
-					<iframe width="100%" src="https://www.youtube.com/embed/De44mwamRLM" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
-				</div>
-				<div class="col-md-3 videos">
-					<iframe width="100%" src="https://www.youtube.com/embed/CatvdN0Rji4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-
-				</div>
-				<div class="col-md-3 videos">
-					<iframe width="100%" src="https://www.youtube.com/embed/vWxXn7ktDlI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-
-				</div>
-				<div class="col-md-3 videos">
-					<iframe width="100%" src="https://www.youtube.com/embed/yGdb9CegBbE" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-
-				</div>
+				<?php
+				if (isset($videos)) {
+					foreach ($videos as $video) {
+						echo "
+						<div class='col-md-3 videos'>
+							<iframe width='100%' src='{$video['url']}' 
+							frameborder='0' allow='autoplay; encrypted-media' allowfullscreen></iframe>
+						</div>
+						";	
+					}
+				}
+							
+				?>
 
 			</div>
 

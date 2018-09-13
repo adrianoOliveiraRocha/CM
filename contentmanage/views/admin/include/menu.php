@@ -4,7 +4,7 @@
 
 if (isset($_SESSION['loged'])) {
 	if ($_SESSION['loged'] == false) {
-		header('location:include/error.php?msg=forbiden');
+		exit(header('location:include/error.php?msg=forbiden'));
 	}
 } else {
 	exit(header('location:include/error.php?msg=forbidden'));
@@ -79,6 +79,16 @@ if (isset($_SESSION['loged'])) {
         <a class="dropdown-item" href="new_delivery.php">Nova Área</a>
         <a class="dropdown-item" href="show_deliveries.php">Exibir Áreas</a>
 
+      </div>
+    </li>
+
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        Vídeo
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="new_video.php">Novo Vídeo</a>
+        <a class="dropdown-item" href="show_videos.php">Exibir Vídeos</a>
       </div>
     </li>
 
