@@ -5,10 +5,12 @@ include_once MODEL . 'Category.php';
 include_once MODEL . 'Promotion.php';
 include_once MODEL . 'Product.php';
 include_once MODEL . 'Video.php';
+include_once MODEL . 'Banner.php';
 
 $categories = Category::getAllCategories();
 $topPpromotions = Promotion::getTopPromotions();
 $videos = Video::getAllVideos();
+$banners = Banner::getAllBanners();
 
 if (isset($_GET['promo'])) { // show promotions
   $catName = 'Promoções';
@@ -111,20 +113,38 @@ if (isset($_GET['promo'])) { // show promotions
 	</div>
 
 </section>
-
+		
 		<div class="slider-top">
+
 			<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+
 			  <div class="carousel-inner">
-				<div class="carousel-item active">
-				  <img class="d-block w-100" src="static/imagens/slider-01.jpg" alt="First slide">
+
+			  <?php
+			  if (isset($banners)) {
+			  	$count = 0;
+			  	foreach ($banners as $banner) {
+			  		if ($count == 0) {
+			  			echo "
+					  		<div class='carousel-item active'>
+								  <img class='d-block w-100' src='upload/{$banner['image']}'>
+								</div>
+					  	";
+			  		} else {
+			  			echo "
+					  		<div class='carousel-item'>
+								  <img class='d-block w-100' src='upload/{$banner['image']}'>
+								</div>
+					  	";
+			  		}
+			  		$count ++;
+			  	}
+			  }
+			  	
+			  ?>
+
 				</div>
-				<div class="carousel-item">
-				  <img class="d-block w-100" src="static/imagens/slider-02.jpg" alt="Second slide">
-				</div>
-				<div class="carousel-item">
-				  <img class="d-block w-100" src="static/imagens/slider-03.jpg" alt="Third slide">
-				</div>
-			  </div>
+
 			  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
 				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 				<span class="sr-only">Previous</span>
@@ -133,6 +153,7 @@ if (isset($_GET['promo'])) { // show promotions
 				<span class="carousel-control-next-icon" aria-hidden="true"></span>
 				<span class="sr-only">Next</span>
 			  </a>
+
 			</div>
 
 		</div>
