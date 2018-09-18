@@ -4,9 +4,18 @@ graficarapida:
 	pass: JK302815
 
 
-	access with ssh:
-	ssh -p 2222 k97inuno@108.167.188.244
-	response: If you need shell access please contact support
+	data base:
+	k97inuno_contentmanage
+	user: k97inuno_adriano
+	pass: 453231
+
+	ftp:
+	host: ftp.grafky.com.br
+	user: adrftp@grafky.com.br
+	pass: 453231
+	port: 21
+
+
 
 
 atrativapropaganda:
@@ -18,3 +27,4 @@ atrativapropaganda:
 o nome do banco: atrat743_contentmanage
 usuario: atrat743_adriano
 senha: 453231
+
