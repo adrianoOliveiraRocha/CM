@@ -110,7 +110,7 @@ if (isset($_SESSION['loged'])) {
     </li>
 
     <li class="nav-item">
-    	<a class="nav-link" href="../../index.php">
+    	<a class="nav-link" href="../../index.php" target="_blanck">
     		Ir para o site
     	</a>
     </li>

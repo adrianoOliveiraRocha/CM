@@ -15,6 +15,12 @@
 
 	<!-- Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+	
+	<!-- BEGIN JIVOSITE CODE {literal} -->
+<script type='text/javascript'>
+(function(){ var widget_id = 'RdML1V2hqd';var d=document;var w=window;function l(){
+var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = '//code.jivosite.com/script/widget/'+widget_id; var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);}if(d.readyState=='complete'){l();}else{if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();</script>
+<!-- {/literal} END JIVOSITE CODE -->
 
 </head>
 <body>
@@ -27,11 +33,11 @@
 			</div>
 			<div class="col-md-3 sociais_top">
 				<ul>
-					<li><a href="contato.html" target="_blanck""><img class="zoom_in" src="../static/imagens/sociais_local.png"/></a></li>
-					<li><a href="http://www.youtube.com" target="_blanck""><img class="zoom_in" src="../static/imagens/sociais_youtube.png"/></a></li>
-					<li><a href="https://www.instagram.com/grafkyimpressao/" target="_blanck"><img class="zoom_in" src="../static/imagens/sociais_instagram.png"/></a></li>
-					<li><a href="https://www.facebook.com/grafky/" target="_blanck"><img class="zoom_in" src="../static/imagens/sociais_face.png"/></a></li>
-					<li><a href="https://api.whatsapp.com/send?phone=558588654037" target="_blanck"><img class="zoom_in" src="../static/imagens/sociais_whatsapp.png"/></a></li>
+					<li><a href="contato.html" target="_blanck""><img class="zoom_in" src="../../static/imagens/sociais_local.png"/></a></li>
+					<li><a href="http://www.youtube.com" target="_blanck""><img class="zoom_in" src="../../static/imagens/sociais_youtube.png"/></a></li>
+					<li><a href="https://www.instagram.com/grafkyimpressao/" target="_blanck"><img class="zoom_in" src="../../static/imagens/sociais_instagram.png"/></a></li>
+					<li><a href="https://www.facebook.com/grafky/" target="_blanck"><img class="zoom_in" src="../../static/imagens/sociais_face.png"/></a></li>
+					<li><a href="https://api.whatsapp.com/send?phone=558588654037" target="_blanck"><img class="zoom_in" src="../../static/imagens/sociais_whatsapp.png"/></a></li>
 
 				</ul>
 
@@ -64,7 +70,7 @@
 					<p><a href="contato.php">Contato</a></p>
 					<p><a href="portfolio.php">Portfólio</a></p>
 					<p><a href="../../index.php#videos">Vídeos</a></p>
-					<p><a href="#">Área Restrita</a></p>
+					<p><a href="../../control/UserControl.php?key=enter" target="_blanck">Área Restrita</a></p>
 
 				</div>
 
