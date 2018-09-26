@@ -38,10 +38,31 @@ if (isset($_GET['promo'])) { // show promotions
 
   if (isset($_GET['page'])) {
     $page = (int) $_GET['page'];
+
+    $previous = $page - 1;
+		$next = $page + 1;
+		if ($page == 1) {
+			$previous = 1;
+		}
+		if ($next >= $nPages) {
+			$next = $nPages;
+		}
+
     $valueOfseet = ($page - 1) * 6;
     $valueCat = $cat;
     $products = Product::getGroupSixProducts($offset=$valueOfseet, $cat=$valueCat);
   } else {
+  	$page = 1;
+
+    $previous = $page - 1;
+		$next = $page + 1;
+
+		if ($page == 1) {
+			$previous = 1;
+		}
+		if ($next >= $nPages) {
+			$next = $nPages;
+		}
     $products = Product::getGroupSixProducts();
   }
   // defibe the category name
@@ -330,24 +351,25 @@ var s = document.createElement('script'); s.type = 'text/javascript'; s.async = 
             <ul class="pagination" style="margin: 2%;">
 
               <?php //pagination for products
-              for ($i=1; $i <= $nPages; $i++) {
-                if ($i == $page) {
-                  echo "
+              	echo "
                   <li class='page-item active'>
-                    <a class='page-link' href='index.php?page={$i}&cat={$cat}#products'>
-                      {$i}
+                    <a class='page-link' href='index.php?page={$previous}&cat={$cat}#products'>
+                      Anterior
                     </a>
-                  </li>";
-                } else {
-                  echo "
+                  </li>
                   <li class='page-item'>
-                    <a class='page-link' href='index.php?page={$i}&cat={$cat}#products'>
-                      {$i}
+                    <a class='page-link'>
+                      Página {$page} de {$nPages}
                     </a>
-                  </li>";
-                }
+                  </li>
+                  <li class='page-item active'>
+                    <a class='page-link' href='index.php?page={$next}&cat={$cat}#products'>
+                      Próxima
+                    </a>
+                  </li>
 
-              }
+                  ";             
+
                ?>
            </ul>
 

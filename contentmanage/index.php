@@ -351,6 +351,7 @@ var s = document.createElement('script'); s.type = 'text/javascript'; s.async = 
             <ul class="pagination" style="margin: 2%;">
 
               <?php //pagination for products
+              if ($nPages > 6) {
               	echo "
                   <li class='page-item active'>
                     <a class='page-link' href='index.php?page={$previous}&cat={$cat}#products'>
@@ -367,8 +368,27 @@ var s = document.createElement('script'); s.type = 'text/javascript'; s.async = 
                       Próxima
                     </a>
                   </li>
-
-                  ";             
+                  ";
+              } else {
+	              	for ($i=1; $i <= $nPages; $i++) {
+		                if ($i == $page) {
+		                  echo "
+		                  <li class='page-item active'>
+		                    <a class='page-link' href='index.php?page={$i}&cat={$cat}#products'>
+		                      {$i}
+		                    </a>
+		                  </li>";
+		                } else {
+		                  echo "
+		                  <li class='page-item'>
+		                    <a class='page-link' href='index.php?page={$i}&cat={$cat}#products'>
+		                      {$i}
+		                    </a>
+		                  </li>";
+		                }
+	              }
+              }
+              	
 
                ?>
            </ul>
