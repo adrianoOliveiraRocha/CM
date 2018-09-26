@@ -96,8 +96,22 @@ var s = document.createElement('script'); s.type = 'text/javascript'; s.async = 
 
 			</div>
 
-			<div class="col-md-6 formulario">
-				<form action="contato_confirmacao.php" method="post" class="form-horizontal" data-wow-delay="0.6s">
+			<div class="col-md-6 formulario" id="divform">
+				<?php
+				if (isset($_REQUEST['sended'])) {
+					echo "
+						<div class='alert alert-success alert-dismissible'>
+						  <button type='button' class='close' data-dismiss='alert'>&times;</button>
+						  <strong>Obrigado!</strong> Sua mensagem foi enviada.
+						</div>
+					";
+				}
+
+				
+				?>
+				
+				<form action="../../control/EmailControl.php" method="post" 
+				class="form-horizontal" data-wow-delay="0.6s">
 					<fieldset>
 
 						<!-- Form Name -->
@@ -109,12 +123,12 @@ var s = document.createElement('script'); s.type = 'text/javascript'; s.async = 
 						<!-- Text input-->
 
 							<div class="col-md-12">
-								<input id="nome" name="nome" type="text" placeholder="Digite seu nome e sobrenome" class="form-control input-md" required=""></p>
+								<input id="name" name="name" type="text" placeholder="Digite seu nome e sobrenome" class="form-control input-md" required=""></p>
 
 							</div>
 
 							<div class="col-md-12">
-								<input id="telefone" name="telefone" type="text" placeholder="Informe um numero para contato" class="form-control input-md"></P>
+								<input id="phone" name="phone" type="text" placeholder="Informe um numero para contato" class="form-control input-md"></P>
 
 							</div>
 
@@ -124,7 +138,7 @@ var s = document.createElement('script'); s.type = 'text/javascript'; s.async = 
 							</div>
 
 							<div class="col-md-12">
-								<textarea class="form-control" id="mensagem" name="mensagem">Digite sua mensagem...</textarea></P>
+								<textarea class="form-control" id="text" name="message">Digite sua mensagem...</textarea></P>
 
 							</div>
 
@@ -134,6 +148,7 @@ var s = document.createElement('script'); s.type = 'text/javascript'; s.async = 
 							</div>
 
 						</fieldset>
+
 			</form>
 
 			</div>

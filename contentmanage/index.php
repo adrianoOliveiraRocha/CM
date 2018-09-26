@@ -306,7 +306,7 @@ var s = document.createElement('script'); s.type = 'text/javascript'; s.async = 
 	                <div class='col-md-4 produtos'>
 	                  <div class='cubo_produto'>
 	                    <img class='img-responsive' src='upload/{$product['image']}'>
-	    								<h3>{$product['description']}</h3>
+	    								<h3 style='font-size: 16px;'>{$product['description']}</h3>
 	    								<div class='cod_preco_prod' title='Nº Referência'>
 	    									<p id='cod_prod'>Ref: {$product['id']}</p>
 
@@ -363,7 +363,7 @@ var s = document.createElement('script'); s.type = 'text/javascript'; s.async = 
 	             <div class='col-md-4 produtos'>
 	               <div class='cubo_produto'>
 	                 <img class='img-responsive' src='upload/{$promotion['image']}'>
-	                 <h3>{$promotion['description']}</h3>
+	                 <h3 style='font-size: 16px;'>{$promotion['description']}</h3>
 	                 <div class='cod_preco_prod' title='Nº Referência'>
 	                   <p id='cod_prod'>Ref: {$promotion['id']}</p>
 
