@@ -351,24 +351,101 @@ var s = document.createElement('script'); s.type = 'text/javascript'; s.async = 
             <ul class="pagination" style="margin: 2%;">
 
               <?php //pagination for products
-              if ($nPages > 6) {
+              if ($nPages > 8) {
+              	$down = $page - 3;
+              	$up = $nPages - $page;  
+              	          	
               	echo "
-                  <li class='page-item active'>
-                    <a class='page-link' href='index.php?page={$previous}&cat={$cat}#products'>
-                      Anterior
-                    </a>
-                  </li>
                   <li class='page-item'>
-                    <a class='page-link'>
-                      Página {$page} de {$nPages}
-                    </a>
-                  </li>
-                  <li class='page-item active'>
-                    <a class='page-link' href='index.php?page={$next}&cat={$cat}#products'>
-                      Próxima
+                    <a class='page-link' href='index.php?page={$previous}&cat={$cat}#products'>
+                      <
                     </a>
                   </li>
                   ";
+
+                // down
+                if ($down <= 1) {
+                	for ($i=1; $i < $page; $i++) { 
+                		echo "
+	                  <li class='page-item'>
+	                    <a class='page-link' href='index.php?page={$i}&cat={$cat}#products'>
+	                      {$i}
+	                    </a>
+	                  </li>";
+                	}
+                } elseif ($down >= 1) {
+                	$init = $page - 2;
+                	echo "
+                	<li class='page-item'>
+	                    <a class='page-link' href='#'>
+	                      ...
+	                    </a>
+	                  </li>
+                	";
+                	for ($i=$init; $i < $page; $i++) { 
+                		echo "
+                		<li class='page-item'>
+	                    <a class='page-link' href='index.php?page={$i}&cat={$cat}#products'>
+	                      {$i}
+	                    </a>
+	                  </li>";
+                	}
+                }
+
+                // end down
+
+                echo "
+                  <li class='page-item active'>
+                    <a class='page-link' href='index.php?page={$page}&cat={$cat}#products'>
+                      {$page}
+                    </a>
+                  </li>";
+
+                // up
+                if ($up <= 2 ) {
+                	$init = $page + 1;
+                	
+                	for ($i=($page + 1); $i <= $nPages; $i++) { 
+                		echo "
+                		<li class='page-item'>
+	                    <a class='page-link' href='index.php?page={$i}&cat={$cat}#products'>
+	                      {$i}
+	                    </a>
+	                  </li>";
+                	}
+                } elseif ($up > 2) {
+                	$init = $page + 1;
+                	$end = $init + 2;
+                	
+                	for ($i=$init; $i < $end; $i++) { 
+                		echo "
+                		<li class='page-item'>
+	                    <a class='page-link' href='index.php?page={$i}&cat={$cat}#products'>
+	                      {$i}
+	                    </a>
+	                  </li>";
+                	}
+                	echo "
+                	<li class='page-item'>
+	                    <a class='page-link' href='#'>
+	                      ...
+	                    </a>
+	                  </li>
+                	";
+                }
+
+                // end up
+
+                echo "<li class='page-item'>
+                    <a class='page-link' href='index.php?page={$next}&cat={$cat}#products'>
+                      >
+                    </a>
+                  </li>
+                  ";
+
+                
+
+
               } else {
 	              	for ($i=1; $i <= $nPages; $i++) {
 		                if ($i == $page) {
