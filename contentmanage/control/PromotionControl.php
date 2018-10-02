@@ -19,9 +19,9 @@ if (isset($_GET['key'])) {
 			$promotion->setImage($imageName);
 
 			if ($promotion->save()) {
-				header('location:../views/admin/index.php?msg=success');
+				exit(header('location:../views/admin/index.php?msg=success'));
 			} else {
-				header('location:../views/admin/include/error.php?msg=nosave');
+				exit(header('location:../views/admin/include/error.php?msg=nosave'));
 			}
 
 			break;
@@ -64,9 +64,9 @@ if (isset($_GET['key'])) {
 			$currentImageName = $promotion['image'];
       unlink(UPLOAD . $currentImageName);
       if (Promotion::delete($idPromotion)) {
-				header('location:../views/admin/index.php?msg=success');
+				exit(header('location:../views/admin/index.php?msg=success'));
 			} else {
-				header('location:../views/admin/include/error.php?msg=nodel');
+				exit(header('location:../views/admin/include/error.php?msg=nodel'));
 			}
 			break;
 

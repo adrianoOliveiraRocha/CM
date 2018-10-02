@@ -1,3 +1,12 @@
+<?php
+
+include_once '../../config.php';
+include_once MODEL . 'W2a.php';
+$w2a = W2a::getCurrent();
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -84,7 +93,15 @@ var s = document.createElement('script'); s.type = 'text/javascript'; s.async = 
 			<div class="col-md-8 colula_esquerda_sobre"> <!--Coluna Esquerda -->
 				<div class="row">
 					<div class="col-md-12 img_quemsomos">
-						<img class="img-responsive" src="../../static/imagens/img_equipe.jpg"/>
+
+						<!-- <img class="img-responsive" src="../../static/imagens/img_equipe.jpg"/> -->
+						<?php
+							if ($w2a['large_banner'] && $w2a['large_banner'] != 'not_sended') {
+								echo "
+								<img class='img-responsive' src='../../upload/{$w2a['large_banner']}'/>
+								";
+							}
+						?>
 					
 					</div>
 				
@@ -93,14 +110,13 @@ var s = document.createElement('script'); s.type = 'text/javascript'; s.async = 
 				<div class="row">
 					<div class="col-md-12 titulo_quemsomos">
 						<h1>Quem somos</h1>
-						<p>É um fato conhecido de todos que um leitor se distrairá com o conteúdo de texto legível de uma página
-						quando estiver examinando sua diagramação.</p>
-						<p>A vantagem de usar Lorem Ipsum é que ele tem uma distribuição normal de letras, ao contrário de 
-						"Conteúdo aqui, conteúdo aqui", fazendo com que ele tenha uma aparência similar a de um texto legível.</p>
-						<p>Muitos softwares de publicação e editores de páginas na internet agora usam Lorem Ipsum como
-						texto-modelo padrão, e uma rápida busca por 'lorem ipsum' mostra vários websites ainda em sua fase de 
-						construção. Várias versões novas surgiram ao longo dos anos, eventualmente por acidente, e às vezes de 
-						propósito (injetando humor, e coisas do gênero).</p>
+						<p>
+							<?php
+							if ($w2a['text'] && $w2a['text'] != 'not_sended') {
+								echo $w2a['text'];
+							}
+						?>
+						</p>
 					
 					</div>
 				
@@ -111,15 +127,33 @@ var s = document.createElement('script'); s.type = 'text/javascript'; s.async = 
 			<div class="col-md-4 coluna_direita_sobre">
 				<div class="row">
 					<div class="col-md-12 img_estrutura">
-						<img class="img-responsive" src="../../static/imagens/img_modelo_02.jpg"/>
+						<?php
+							if ($w2a['img1'] && $w2a['img1'] != 'not_sended') {
+								echo "
+								<img class='img-responsive' src='../../upload/{$w2a['img1']}'/>
+								";
+							}
+						?>
 						
 					</div>
 					<div class="col-md-12 img_estrutura">
-						<img class="img-responsive" src="../../static/imagens/img_modelo_02.jpg"/>
+						<?php
+							if ($w2a['img2'] && $w2a['img2'] != 'not_sended') {
+								echo "
+								<img class='img-responsive' src='../../upload/{$w2a['img1']}'/>
+								";
+							}
+						?>
 						
 					</div>
 					<div class="col-md-12 img_estrutura">
-						<img class="img-responsive" src="../../static/imagens/img_modelo_02.jpg"/>
+						<?php
+							if ($w2a['img3'] && $w2a['img3'] != 'not_sended') {
+								echo "
+								<img class='img-responsive' src='../../upload/{$w2a['img3']}'/>
+								";
+							}
+						?>
 						
 					</div>
 				
@@ -156,7 +190,7 @@ var s = document.createElement('script'); s.type = 'text/javascript'; s.async = 
 				
 				</div>
 				<div class="col-md-3 rodape">
-					<img class="img-responsive" src="../static/imagens/logo.png"/>
+					<img class="img-responsive" src="../../static/imagens/logo.png"/>
 				
 				</div>
 			

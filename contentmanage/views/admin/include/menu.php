@@ -10,12 +10,11 @@ if (isset($_SESSION['loged'])) {
 	exit(header('location:include/error.php?msg=forbidden'));
 }
 
-
 ?>
 
 <!-- MENU -->
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-	<a class="navbar-brand" href="index.php">Área Administrativa</a>
+	<a class="navbar-brand" href="index.php">Início</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
 	<span class="navbar-toggler-icon"></span>
 	</button>
@@ -105,13 +104,15 @@ if (isset($_SESSION['loged'])) {
 
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-        Quem Somos
+        Adicionais
       </a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" href="new_banner.php">Novo</a>
+        <a class="dropdown-item" href="../../control/W2aControl.php?key=verify">Quem Somos</a>
         
       </div>
     </li>
+
+
 
     <li class="nav-item">
     	<a class="nav-link" href="../../control/UserControl.php?key=logout">

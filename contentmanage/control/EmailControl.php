@@ -17,4 +17,3 @@ if ($resp) {
 	echo "ops!!";
 }
 
-vendas@atrativapropaganda.com.br
