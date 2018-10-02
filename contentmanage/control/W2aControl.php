@@ -15,18 +15,16 @@ if (isset($_GET['key'])) {
         exit(header("location: ../views/admin/w2a.php?key=0"));
       }
       break;
-    
+
     case 'save':
 
-      $text = $_POST['text'];
       $largeBanner = $_FILES['largeBanner'];
       $img1 = $_FILES['img1'];
       $img2 = $_FILES['img2'];
       $img3 = $_FILES['img3'];
-      
+
       $w2a = new W2a();
-      $w2a->setText($text);
-  
+
       if ($largeBanner['name']) {
         $w2a->setLargeBanner(Utils::uploadImage($largeBanner));
       } else {
@@ -56,82 +54,110 @@ if (isset($_GET['key'])) {
       break;
 
     case 'edit':
-      $id = $_REQUEST['id'];
+      $id = 1;
       $w2a = W2a::getW2a($id);
 
-      // $text = $_POST['text'];
-      $text = str_replace("'",'"', $_POST['text']);
-      $largeBanner = $_FILES['largeBanner']; 
+      $largeBanner = $_FILES['largeBanner'];
       $img1 = $_FILES['img1'];
       $img2 = $_FILES['img2'];
       $img3 = $_FILES['img3'];
 
-      $q = "UPDATE w2a set text = '{$text}'";
-      
+      $q = "update w2a ";
+      $init = false;
+
       if ($largeBanner['name']) {
-        if ($w2a['large_banner'] != 'not_sended') {
+        if ($w2a['large_banner'] != 'not_sended' && $w2a['large_banner'] !== null) {
           unlink(UPLOAD . $w2a['large_banner']);
-        }        
+        }
         $name = Utils::uploadImage($largeBanner);
-        $q = $q . ", large_banner = '{$name}'";
+        $q = $q . "set large_banner = '{$name}'";
+        $init = true;
       }
 
       if ($img1['name']) {
-        if ($w2a['img1'] != 'not_sended') {
+        if ($w2a['img1'] != 'not_sended' && $w2a['img1'] !== null) {
           unlink(UPLOAD . $w2a['img1']);
         }
         $name = Utils::uploadImage($img1);
-        $q = $q . ", img1 = '{$name}'";
+        if ($init) {
+          $q = $q . ", img1 = '{$name}'";
+        } else {
+          $q = $q . "set img1 = '{$name}'";
+          $init = true;
+        }
+
       }
 
       if ($img2['name']) {
-        if ($w2a['img2'] != 'not_sended') {
+        if ($w2a['img2'] != 'not_sended' && $w2a['img2'] !== null) {
           unlink(UPLOAD . $w2a['img2']);
         }
         $name = Utils::uploadImage($img2);
-        $q = $q . ", img2 = '{$name}'";
+        if ($init) {
+          $q = $q . ", img2 = '{$name}'";
+        } else {
+          $q = $q . "set img2 = '{$name}'";
+          $init = true;
+        }
       }
 
       if ($img3['name']) {
-        if ($w2a['img3'] != 'not_sended') {
+        if ($w2a['img3'] != 'not_sended' && $w2a['img3'] !== null) {
           unlink(UPLOAD . $w2a['img3']);
         }
         $name = Utils::uploadImage($img3);
-        $q = $q . ", img3 = '{$name}'";
+        if ($init) {
+          $q = $q . ", img3 = '{$name}'";
+        } else {
+          $q = $q . "set img3 = '{$name}'";
+          $init = true;
+        }
       }
 
-      $q = $q . " where id = {$id}";
-      
-      if (W2a::update($q)) {
-        exit(header('location:../views/admin/index.php?msg=success'));
+      if ($init) {
+        $q = $q . " where id = {$id}";
+        if (W2a::update($q)) {
+          exit(header('location:../views/admin/index.php?msg=success'));
+        } else {
+          exit(header('location:../views/admin/include/error.php?msg=nosave'));
+        }
       } else {
-        exit(header('location:../views/admin/include/error.php?msg=nosave'));
-      }
-     
-      break;
-
-    case 'delete':
-
-      $id = $_REQUEST['id'];
-      $w2a = W2a::getW2a($id);
-      
-      if (W2a::delete($id)){
-
-        unlink(UPLOAD . $w2a['large_banner']);
-        unlink(UPLOAD . $w2a['img1']);
-        unlink(UPLOAD . $w2a['img2']);
-        unlink(UPLOAD . $w2a['img3']);
-
         exit(header('location:../views/admin/index.php?msg=success'));
-        
-      } else {
-        exit(header('location:../views/admin/include/error.php?msg=nodel'));
       }
 
       break;
-    
+
+    // case 'delete':
+    //
+    //   $id = $_REQUEST['id'];
+    //   $w2a = W2a::getW2a($id);
+    //
+    //   if (W2a::delete($id)){
+    //
+    //     unlink(UPLOAD . $w2a['large_banner']);
+    //     unlink(UPLOAD . $w2a['img1']);
+    //     unlink(UPLOAD . $w2a['img2']);
+    //     unlink(UPLOAD . $w2a['img3']);
+    //
+    //     exit(header('location:../views/admin/index.php?msg=success'));
+    //
+    //   } else {
+    //     exit(header('location:../views/admin/include/error.php?msg=nodel'));
+    //   }
+    //
+    //   break;
+
+    case 'text':
+      exit(header("location: ../text_edit/index.php"));
+      break;
+
+    case 'inserttext':
+      echo "I arrived";
+      break;
+
     default:
-      # code...
+      echo "code is not recognized";
       break;
   }
+
 }

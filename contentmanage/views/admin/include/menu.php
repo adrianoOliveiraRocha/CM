@@ -104,11 +104,16 @@ if (isset($_SESSION['loged'])) {
 
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-        Adicionais
+        Quem Somos
       </a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" href="../../control/W2aControl.php?key=verify">Quem Somos</a>
-        
+        <a class="dropdown-item" href="../../control/W2aControl.php?key=text">
+					Editar Texto
+				</a>
+				<a class="dropdown-item" href="../../control/W2aControl.php?key=verify">
+					Editar Imagens
+				</a>
+
       </div>
     </li>
 

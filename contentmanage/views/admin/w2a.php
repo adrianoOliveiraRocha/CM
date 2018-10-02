@@ -21,7 +21,7 @@
     } else {
       $action = "../../control/W2aControl.php?key=save";
     }
-        
+
 	?>
 
 	<div class="container-fluid" style="margin-bottom: 2%;">
@@ -30,30 +30,19 @@
 			margin-right: auto; margin-top: 5%;">
 			<h3>Área Administrativa -> Quem Somos</h3>
 
-			<form action=<?php echo $action; ?> method="post" 
+			<form action=<?php echo $action; ?> method="post"
         enctype="multipart/form-data">
 
         <?php
         echo "<input type='hidden' name='id' value='{$w2a['id']}'/>";
         ?>
 
-				<div class="form-group">
-					<label>Texto</label>
-					<textarea class="form-control" rows="10" name="text">
-            <?php
-            if ($w2a) {
-              echo $w2a['text'];
-            }
-            ?>
-           
-          </textarea>
-				</div>
-
-        <!-- top banner -->
+				<!-- top banner -->
         <?php
           if ($w2a) {
 
-            if ($w2a['large_banner'] != 'not_sended') {
+            if ($w2a['large_banner'] != 'not_sended'
+							&& $w2a['large_banner'] !== null) {
               echo "
               <div class='form-group' style='width: 50%;'>
                 <label>Banner Superior:</label>
@@ -62,7 +51,7 @@
               </div>";
               echo "
               <div class='form-group'>
-                <label>Substituir imagem 1:</label>
+                <label>Substituir Benner Superior:</label>
                 <input type='file' name='largeBanner' class='form-control'>
               </div>
               ";
@@ -72,7 +61,7 @@
                 <input type='file' name='largeBanner' class='form-control'>
               </div>
               ";
-            } 
+            }
 
           } else {
             echo "
@@ -85,12 +74,12 @@
         ?>
         <!-- end img1 -->
         <br />
-        
+
         <!-- img1 -->
         <?php
           if ($w2a) {
 
-            if ($w2a['img1'] != 'not_sended') {
+            if ($w2a['img1'] != 'not_sended' && $w2a['img1'] !== null) {
               echo "
               <div class='form-group' style='width: 50%;'>
                 <label>Imagem 1 atual:</label>
@@ -111,7 +100,7 @@
               </div>
               ";
             }
-           
+
           } else {
             echo "
               <div class='form-group'>
@@ -128,7 +117,7 @@
         <?php
           if ($w2a) {
 
-            if ($w2a['img2'] != 'not_sended') {
+            if ($w2a['img2'] != 'not_sended' && $w2a['img2'] !== null) {
               echo "
               <div class='form-group' style='width: 50%;'>
                 <label>Imagem 2 atual:</label>
@@ -149,7 +138,7 @@
               </div>
               ";
             }
-            
+
           } else {
             echo "
               <div class='form-group'>
@@ -167,7 +156,7 @@
         <?php
           if ($w2a) {
 
-            if ($w2a['img3'] != 'not_sended') {
+            if ($w2a['img3'] != 'not_sended' && $w2a['img3'] !== null) {
               echo "
               <div class='form-group' style='width: 50%;'>
                 <label>Imagem 3 atual:</label>
@@ -188,7 +177,7 @@
               </div>
               ";
             }
-            
+
           } else {
             echo "
               <div class='form-group'>
@@ -200,7 +189,7 @@
         ?>
         <!-- end img1 -->
         <br />
-        
+
 
         <?php
 
@@ -208,12 +197,7 @@
           echo "
           <a href='../../control/W2aControl.php?key=edit&id={$w2a['id']}'>
           <button type='submit' class='btn btn-primary'>Editar</button>
-          </a>
-
-          <a href='../../control/W2aControl.php?key=delete&id={$w2a['id']}'>
-          <button type='button' class='btn btn-primary btn-danger'>Deletar</button>
-          </a>
-          ";
+          </a>";
         } else {
           echo "
           <button type='submit' class='btn btn-primary'>Salvar</button>
@@ -221,7 +205,7 @@
         }
 
         ?>
-				
+
 
 			</form>
 

@@ -47,13 +47,28 @@ class W2a
 		return $this->img3;
 	}
 
-	public function save()
-	{
-
-		$statement = "insert into w2a (text, large_banner, img1, img2, img3)
-    values('{$this->getText()}', '{$this->getLargeBanner()}', ".
+	public function save(){
+		/*This method is used when the w2a does not exists and we am saving
+		the images first*/
+		$statement = "insert into w2a (large_banner, img1, img2, img3)
+    values('{$this->getLargeBanner()}', ".
     "'{$this->getImg1()}', '{$this->getImg2()}', '{$this->getImg3()}')";
 
+		self::$connect = Connect::getInstance();
+		$stmt = self::$connect->prepare ( $statement );
+		$stmt->execute ();
+		if ($stmt->rowCount () > 0) {
+			return true;
+		} else {
+			return false;
+		}
+
+	}
+
+	public static function insertText($data){
+		/*This method is used when the w2a does not exists and we am saving
+		the text first*/
+		$statement = "insert into w2a (text) values('{$data}')";
 		self::$connect = Connect::getInstance();
 		$stmt = self::$connect->prepare ( $statement );
 		$stmt->execute ();
