@@ -1,0 +1,36 @@
+[26-Sep-2018 15:17:45 America/Chicago] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-6' at line 1 in /home/k97inuno/public_html/models/Product.php:73
+Stack trace:
+#0 /home/k97inuno/public_html/models/Product.php(73): PDO->query('select * from p...')
+#1 /home/k97inuno/public_html/index.php(53): Product::getGroupSixProducts(-6, 0)
+#2 {main}
+  thrown in /home/k97inuno/public_html/models/Product.php on line 73
+[26-Sep-2018 15:17:56 America/Chicago] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-6' at line 1 in /home/k97inuno/public_html/models/Product.php:73
+Stack trace:
+#0 /home/k97inuno/public_html/models/Product.php(73): PDO->query('select * from p...')
+#1 /home/k97inuno/public_html/index.php(53): Product::getGroupSixProducts(-6, 0)
+#2 {main}
+  thrown in /home/k97inuno/public_html/models/Product.php on line 73
+[26-Sep-2018 15:18:07 America/Chicago] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-6' at line 1 in /home/k97inuno/public_html/models/Product.php:73
+Stack trace:
+#0 /home/k97inuno/public_html/models/Product.php(73): PDO->query('select * from p...')
+#1 /home/k97inuno/public_html/index.php(53): Product::getGroupSixProducts(-6, 0)
+#2 {main}
+  thrown in /home/k97inuno/public_html/models/Product.php on line 73
+[26-Sep-2018 15:18:51 America/Chicago] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-6' at line 1 in /home/k97inuno/public_html/models/Product.php:73
+Stack trace:
+#0 /home/k97inuno/public_html/models/Product.php(73): PDO->query('select * from p...')
+#1 /home/k97inuno/public_html/index.php(53): Product::getGroupSixProducts(-6, 0)
+#2 {main}
+  thrown in /home/k97inuno/public_html/models/Product.php on line 73
+[26-Sep-2018 15:19:58 America/Chicago] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-6' at line 1 in /home/k97inuno/public_html/models/Product.php:73
+Stack trace:
+#0 /home/k97inuno/public_html/models/Product.php(73): PDO->query('select * from p...')
+#1 /home/k97inuno/public_html/index.php(53): Product::getGroupSixProducts(-6, 0)
+#2 {main}
+  thrown in /home/k97inuno/public_html/models/Product.php on line 73
+[26-Sep-2018 15:21:03 America/Chicago] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-6' at line 1 in /home/k97inuno/public_html/models/Product.php:73
+Stack trace:
+#0 /home/k97inuno/public_html/models/Product.php(73): PDO->query('select * from p...')
+#1 /home/k97inuno/public_html/index.php(53): Product::getGroupSixProducts(-6, 0)
+#2 {main}
+  thrown in /home/k97inuno/public_html/models/Product.php on line 73

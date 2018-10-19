@@ -70,6 +70,7 @@ var s = document.createElement('script'); s.type = 'text/javascript'; s.async = 
 					<p><a href="contato.php">Contato</a></p>
 					<p><a href="portfolio.php">Portfólio</a></p>
 					<p><a href="../../index.php#videos">Vídeos</a></p>
+					<p><a href="../../index.php#pagamentos">Form/Pagamento</a></p>
 					<p><a href="../../control/UserControl.php?key=enter" target="_blanck">Área Restrita</a></p>
 
 				</div>

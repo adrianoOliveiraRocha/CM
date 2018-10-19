@@ -10,18 +10,18 @@ if (isset($_GET['key'])) {
 			session_start();
 			if (isset($_SESSION['loged'])) {
 				if ($_SESSION['loged'] == true) {
-					header('location:../views/admin/index.php');
+					exit(header('location:../views/admin/index.php'));
 				} else {
-					header('location:../views/admin/formlogin.php');
+					exit(header('location:../views/admin/formlogin.php'));
 				}
 			} else {
-				header('location:../views/admin/formlogin.php');
+				exit(header('location:../views/admin/formlogin.php'));
 			}
 			break;
 
 		case 'login':
 			if (empty($_POST['email']) || empty($_POST['pwd'])) {
-				header('location:../views/admin/formlogin.php?msg=empty');
+				exit(header('location:../views/admin/formlogin.php?msg=empty'));
 			} else {
 				$id = User::login($_POST['email'], $_POST['pwd']);
 				if ($id) {
@@ -30,10 +30,10 @@ if (isset($_GET['key'])) {
 					$_SESSION['id'] = $id;
 					$_SESSION['email'] = $_POST['email'];
 					$_SESSION['pwd'] = $_POST['pwd'];
-					header('location:../views/admin/index.php');
+					exit(header('location:../views/admin/index.php'));
 					return $id;
 				} else {
-					header('location:../views/admin/include/error.php?msg=notfound');
+					exit(header('location:../views/admin/include/error.php?msg=notfound'));
 				}
 
 			}
@@ -42,7 +42,7 @@ if (isset($_GET['key'])) {
 		case 'logout':
 			session_start();
 			session_destroy();
-			header('location:../index.php');
+			exit(header('location:../index.php'));
 			break;
 
 		case 'edit':
@@ -50,14 +50,14 @@ if (isset($_GET['key'])) {
 			$pwd = $_POST['pwd'];
 			$id = $_SESSION['id'];
 			if ($email == $_SESSION['email'] && $pwd == $_SESSION['pwd']) {
-				header('location:../views/admin/index.php?msg=nochange');
+				exit(header('location:../views/admin/index.php?msg=nochange'));
 			} else {
 				$q = "update user set email = '{$email}', password = '{$pwd}'
 				where id = {$id}";
 				if (User::update($q)) {
 					$_SESSION['email'] = $email;
 					$_SESSION['pwd'] = $pwd;
-					header('location:../views/admin/index.php?msg=success');
+					exit(header('location:../views/admin/index.php?msg=success'));
 				}
 			}
 			break;

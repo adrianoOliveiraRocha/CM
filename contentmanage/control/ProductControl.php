@@ -22,9 +22,9 @@ if (isset($_GET['key'])) {
 			$product->setImage($imageName);
 
 			if ($product->save()) {
-				header('location:../views/admin/index.php?msg=success');
+				exit(header('location:../views/admin/index.php?msg=success'));
 			} else {
-				header('location:../views/admin/include/error.php?msg=nosave');
+				exit(header('location:../views/admin/include/error.php?msg=nosave'));
 			}
 
 			break;
@@ -50,13 +50,13 @@ if (isset($_GET['key'])) {
 					value='{$value}' where id = {$idProduct}";
 				}
 				if (Product::update($q)) {
-					header('location:../views/admin/index.php?msg=success');
+					exit(header('location:../views/admin/index.php?msg=success'));
 				} else {
-					header('location:../views/admin/include/error.php?msg=nosave');
+					exit(header('location:../views/admin/include/error.php?msg=nosave'));
 				}
 
 			} else {
-				header('location:../views/admin/edit_product.php?id='.$_GET['id']);
+				exit(header('location:../views/admin/edit_product.php?id='.$_GET['id']));
 			}
 			break;
 
@@ -66,9 +66,9 @@ if (isset($_GET['key'])) {
 			$currentImageName = $product['image'];
 			unlink(UPLOAD . $currentImageName);
 			if (Product::delete($idProduct)) {
-				header('location:../views/admin/index.php?msg=success');
+				exit(header('location:../views/admin/index.php?msg=success'));
 			} else {
-				header('location:../views/admin/include/error.php?msg=nodel');
+				exit(header('location:../views/admin/include/error.php?msg=nodel'));
 			}
 			break;
 

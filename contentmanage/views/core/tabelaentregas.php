@@ -56,7 +56,7 @@ var s = document.createElement('script'); s.type = 'text/javascript'; s.async = 
 	<div class="container">
 		<div class="row">
 			<div class="col-md-4 logo_top">
-				<a href="index.html"><img class="img-responsive" src="../../static/imagens/logo.png"></a>
+				<a href="index.php"><img class="img-responsive" src="../../static/imagens/logo.png"></a>
 
 			</div>
 
@@ -77,6 +77,7 @@ var s = document.createElement('script'); s.type = 'text/javascript'; s.async = 
 					<p><a href="contato.php">Contato</a></p>
 					<p><a href="portfolio.php">Portfólio</a></p>
 					<p><a href="../../index.php#videos">Vídeos</a></p>
+					<p><a href="../../index.php#pagamentos">Form/Pagamento</a></p>
 					<p><a href="../../control/UserControl.php?key=enter" target="_blanck">Área Restrita</a></p>
 
 				</div>

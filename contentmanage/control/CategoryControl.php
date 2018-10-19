@@ -10,14 +10,14 @@ if (isset($_GET['key'])) {
 	switch ($_GET['key']) {
 		case 'newcategory':
 			if (empty($_POST['category_name'])) {
-				header('location:../views/admin/include/error.php?msg=empty');
+				exit(header('location:../views/admin/include/error.php?msg=empty'));
 			} else {
 				$category = new Category();
 				$category->setName($_POST['category_name']);
 				if ($category->save()) {
-					header('location:../views/admin/index.php?msg=success');
+					exit(header('location:../views/admin/index.php?msg=success'));
 				} else {
-					header('location:../views/admin/include/error.php?msg=nosave');
+					exit(header('location:../views/admin/include/error.php?msg=nosave'));
 				}
 			}
 			break;
@@ -28,12 +28,12 @@ if (isset($_GET['key'])) {
 				$name = $_POST['category_name'];
 				$q = "update category set name = '$name' where id = $id";
 				if (Category::update($q)) {
-					header('location:../views/admin/index.php?msg=success');
+					exit(header('location:../views/admin/index.php?msg=success'));
 				} else {
-					header('location:../views/admin/include/error.php?msg=nosave');
+					exit(header('location:../views/admin/include/error.php?msg=nosave'));
 				}
 			} else {
-				header('location:../views/admin/edit_category.php?id='.$_GET['id']);
+				exit(header('location:../views/admin/edit_category.php?id='.$_GET['id']));
 			}
 			break;
 
@@ -53,9 +53,9 @@ if (isset($_GET['key'])) {
 			}
 
 			if (Category::delete($id)) {
-				header('location:../views/admin/index.php?msg=success');
+				exit(header('location:../views/admin/index.php?msg=success'));
 			} else {
-				header('location:../views/admin/include/error.php?msg=nodel');
+				exit(header('location:../views/admin/include/error.php?msg=nodel'));
 			}
 
 			break;

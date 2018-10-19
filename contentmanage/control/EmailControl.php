@@ -5,15 +5,19 @@ $email = $_POST['email'] ?? "email";
 $phone = $_POST['phone'] ?? "Não enviado";
 $message = $_POST['message'] ?? "mensagem";
 
-$to = "adriano.qwe32@gmail.com";
-$subject = "Mensagem do Site";
-$text = "Enviado por {$name}\nEmail: {$email}\nTelefone: {$phone}\nMensagem: {$message}";
+$to = "graficarapida@grafky.com.br";
+//$to = "vendas@atrativapropaganda.com.br";
+$subject = "Contato realizado por cliente";
+
+$text = "Enviado por " . $name;
+$text .= "\nEmail: " . $email;
+$text .= "\nTelefone: " . $phone;
+$text .= "\nMensagem: " . $message;
 
 $resp = mail($to, $subject, $text);
 
 if ($resp) {
-	exit(header("location:../views/core/contato.php?emailsended=true"));
+	exit(header("location:../views/core/contato.php?sended#divform"));
 } else {
-	echo "ops!!";
+	exit(header("location:../views/core/contato.php"));
 }
-

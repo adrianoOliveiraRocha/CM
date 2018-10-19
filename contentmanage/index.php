@@ -209,6 +209,7 @@ var s = document.createElement('script'); s.type = 'text/javascript'; s.async = 
 					<p><a href="views/core/contato.php">Contato</a></p>
 					<p><a href="views/core/portfolio.php">Portfólio</a></p>
 					<p><a href="#videos">Vídeos</a></p>
+					<p><a href="#pagamentos">Form/Pagamento</a></p>
 					<p><a href="control/UserControl.php?key=enter" target="_blanck">Área Restrita</a></p>
 
 				</div>
@@ -572,7 +573,7 @@ var s = document.createElement('script'); s.type = 'text/javascript'; s.async = 
 
 	</div>      <!--// Final Seção Vídeos -->
 
-	<div class="container"><div class="row"><div class="espaco-linha-1"></div></div></div> <!-- Espaço 01 -->
+	<div class="container"><div class="row"><div class="espaco"></div></div></div> <!-- Espaço sem linha -->
 
 	<div class="container">
 		<div class="row">
@@ -585,7 +586,43 @@ var s = document.createElement('script'); s.type = 'text/javascript'; s.async = 
 		</div>
 
 	</div>
+	
+	<div class="container"><div class="row"><div class="espaco-linha-1"></div></div></div> <!-- Espaço com linha -->
+	
+	<a name="pagamentos"></a>
+	
+		<div class="container"><div class="row"><div class="espaco"></div></div></div> <!-- Espaço 01 -->
+		
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 formadepagamento">
+				<h3>DEPÓSITO BANCÁRIO</h3>
+				<img class="img-responsivo" src="static/imagens/bandeiras_cartoes.jpg"/>
+				
+			</div>
+			
 
+		</div>
+
+	</div>
+	
+	<div class="container"><div class="row"><div class="espaco-linha-1"></div></div></div> <!-- Espaço com linha -->
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 formadepagamento">
+				<h3>DEPÓSITO BANCÁRIO</h3>
+				<p><span id="destaque_banco">CAIXA</span> - JOÃO KENNEDY MARQUES DOS SANTOS - ME / AGENCIA: 3281 / CONTA: 1440-2 / OP: 03 / CNPJ: 20.196.865/0001-82</p>
+				<p><span id="destaque_banco">SANTANDER</span> - JOÃO KENNEDY MARQUES DOS SANTOS - ME / AGENCIA: 4279 / CONTA: 130036979 / CNPJ: 20.196.865/0001-82</p>
+				
+			</div>
+			
+
+		</div>
+
+	</div>
+
+	
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12 aviso_">

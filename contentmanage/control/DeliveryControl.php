@@ -15,9 +15,9 @@ if (isset($_GET['key'])) {
 				$delivery->setNeighborHood($_POST['neighborhood']);
         $delivery->setValue($_POST['value']);
 				if ($delivery->save()) {
-					header('location:../views/admin/index.php?msg=success');
+					exit(header('location:../views/admin/index.php?msg=success'));
 				} else {
-					header('location:../views/admin/include/error.php?msg=nosave');
+					exit(header('location:../views/admin/include/error.php?msg=nosave'));
 				}
 			}
 			break;
@@ -32,13 +32,13 @@ if (isset($_GET['key'])) {
         			value ='{$value}' where id = $id";
         
 				if (Delivery::update($q)) {
-					header('location:../views/admin/index.php?msg=success');
+					exit(header('location:../views/admin/index.php?msg=success'));
 				} else {
-					header('location:../views/admin/include/error.php?msg=nosave');
+					exit(header('location:../views/admin/include/error.php?msg=nosave'));
 				}
 
 			} else {
-				header('location:../views/admin/edit_delivery.php?id='.$_GET['id']);
+				exit(header('location:../views/admin/edit_delivery.php?id='.$_GET['id']));
 			}
 
 
@@ -48,9 +48,9 @@ if (isset($_GET['key'])) {
 			$id = $_GET['id'];
 
 			if (Delivery::delete($id)) {
-				header('location:../views/admin/index.php?msg=success');
+				exit(header('location:../views/admin/index.php?msg=success'));
 			} else {
-				header('location:../views/admin/include/error.php?msg=nodel');
+				exit(header('location:../views/admin/include/error.php?msg=nodel'));
 			}
 
 			break;

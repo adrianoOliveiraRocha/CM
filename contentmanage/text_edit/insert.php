@@ -19,7 +19,7 @@ if (isset($_POST['data'])) {
 }
 
 function insert($data, $exists){
-  $id = 1;
+  $id = 2;
   if ($exists) {//update
     $q = "UPDATE w2a set text = '{$data}' where id = {$id}";
 
