@@ -104,6 +104,17 @@ if (isset($_SESSION['loged'])) {
 
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        Portifólio
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="new_port_banner.php">Novo Banner</a>
+        <a class="dropdown-item" href="show_port_banners.php">Exibir Banners</a>
+
+      </div>
+    </li>
+
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
         Quem Somos
       </a>
       <div class="dropdown-menu">

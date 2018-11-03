@@ -54,7 +54,7 @@ if (isset($_GET['key'])) {
       break;
 
     case 'edit':
-      $id = 1;
+      $id = $_REQUEST['id'];
       $w2a = W2a::getW2a($id);
 
       $largeBanner = $_FILES['largeBanner'];

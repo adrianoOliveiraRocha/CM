@@ -1,3 +1,10 @@
+<?php
+	include_once '../../config.php';
+	include_once MODEL . 'Portifoli.php';
+
+	$banners = Portifoli::getAllBanners();
+
+	?>
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -97,96 +104,43 @@ var s = document.createElement('script'); s.type = 'text/javascript'; s.async = 
 					<div class="slider-top">
 						<div id="carouselportfolio1" class="carousel slide" data-ride="carousel">	
 						    <div class="carousel-inner">
-								<div class="carousel-item active">
-								  <img class="d-block w-100" src="../../static/img_portfolio/01.jpg" alt="First slide">
-									<figcaption>
-										<h1>Título 1</h1>
-											<p>Local para uma pequena descrição sobre a imagem.</p>
-									
-									</figcaption>
-								  
-								</div>
-								<div class="carousel-item">
-								  <img class="d-block w-100" src="../../static/img_portfolio/02.jpg" alt="Second slide">
-									<figcaption>
-										<h1>Título 2</h1>
-											<p>Local para uma pequena descrição sobre a imagem.</p>
-									
-									</figcaption>
-								  
-								</div>
-								<div class="carousel-item">
-								   <img class="d-block w-100" src="../../static/img_portfolio/03.jpg" alt="Third slide">
-									    <figcaption>
-											<h1>Título 3</h1>
-												<p>Local para uma pequena descrição sobre a imagem.</p>
-										
-										</figcaption>
-								   
-								</div>
-								<div class="carousel-item">
-								    <img class="d-block w-100" src="../../static/img_portfolio/04.jpg" alt="Third slide">
-										<figcaption>
-											<h1>Título 4</h1>
-												<p>Local para uma pequena descrição sobre a imagem.</p>
-										
-										</figcaption>
-								   
-								</div>
-								<div class="carousel-item">
-								    <img class="d-block w-100" src="../../static/img_portfolio/05.jpg" alt="Third slide">
-										<figcaption>
-											<h1>Título 5</h1>
-												<p>Local para uma pequena descrição sobre a imagem.</p>
-										
-										</figcaption>
-								   
-								</div>
-								<div class="carousel-item">
-								    <img class="d-block w-100" src="../../static/img_portfolio/06.jpg" alt="Third slide">
-										<figcaption>
-											<h1>Título 5</h1>
-												<p>Local para uma pequena descrição sobre a imagem.</p>
-										
-										</figcaption>
-								   
-								</div>
-								<div class="carousel-item">
-								    <img class="d-block w-100" src="../../static/img_portfolio/07.jpg" alt="Third slide">
-										<figcaption>
-											<h1>Título 5</h1>
-												<p>Local para uma pequena descrição sobre a imagem.</p>
-										
-										</figcaption>
-								   
-								</div>
-								<div class="carousel-item">
-								    <img class="d-block w-100" src="../../static/img_portfolio/08.jpg" alt="Third slide">
-										<figcaption>
-											<h1>Título 5</h1>
-												<p>Local para uma pequena descrição sobre a imagem.</p>
-										
-										</figcaption>
-								   
-								</div>
-								<div class="carousel-item">
-								    <img class="d-block w-100" src="../../static/img_portfolio/09.jpg" alt="Third slide">
-										<figcaption>
-											<h1>Título 5</h1>
-												<p>Local para uma pequena descrição sobre a imagem.</p>
-										
-										</figcaption>
-								   
-								</div>
-								<div class="carousel-item">
-								    <img class="d-block w-100" src="../../static/img_portfolio/10.jpg" alt="Third slide">
-										<figcaption>
-											<h1>Título 5</h1>
-												<p>Local para uma pequena descrição sobre a imagem.</p>
-										
-										</figcaption>
-								   
-								</div>
+						    
+						    <?php
+						    if (isset($banners)) {
+						    	$count = 0;
+						    	foreach ($banners as $banner) {
+						    		if ($count == 0) {
+						    			echo "
+							    		<div class='carousel-item active'>
+											  <img class='d-block w-100' src='../../upload/{$banner['image']}' 
+											  alt='First slide'>
+												<figcaption>
+													<h1>{$banner['title']}</h1>
+													<p>{$banner['description']}</p>
+												
+												</figcaption>
+											  
+											</div>
+							    		";
+						    		} else {
+						    			echo "
+							    		<div class='carousel-item'>
+											  <img class='d-block w-100' src='../../upload/{$banner['image']}' 
+											  alt='First slide'>
+												<figcaption>
+													<h1>{$banner['title']}</h1>
+													<p>{$banner['description']}</p>
+												
+												</figcaption>
+											  
+											</div>
+							    		";
+						    		}
+						    		$count ++;
+						    		
+						    	}
+						    }
+						    ?>							
 								
 							</div>
 							
